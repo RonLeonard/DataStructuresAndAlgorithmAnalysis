@@ -9,10 +9,10 @@ public:
     StackBasedOnArray();
     StackBasedOnArray(int n);
     ~StackBasedOnArray();
-    bool push(string item);
-    string pop();
+    bool push(char item);
+    char pop();
 private:
-    string *items;
+    char *items;
     int m_count; //栈中元素个数
     int m_num;  //栈的大小
 };

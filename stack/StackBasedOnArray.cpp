@@ -6,7 +6,7 @@ using std::endl;
 
 StackBasedOnArray::StackBasedOnArray()
 {
-    items = new string[10];
+    items = new char[10];
     m_count = 0;
     m_num = 10;
 }
@@ -14,7 +14,7 @@ StackBasedOnArray::StackBasedOnArray()
 
 StackBasedOnArray::StackBasedOnArray(int n)
 {
-    items = new string[n];
+    items = new char[n];
     if (!items) {
         cout << "allocate memory failed!" << endl;
     }
@@ -35,11 +35,11 @@ StackBasedOnArray::~StackBasedOnArray()
 }
 
 
-bool StackBasedOnArray::push(string item)
+bool StackBasedOnArray::push(char item)
 {
     if (m_count == m_num) {
         m_num *= 2; 
-        string *tmp = new string[m_num];
+        char *tmp = new char[m_num];
         for (int i = 0; i != m_num; i++) {
             tmp[i] = items[i];
         }
@@ -56,12 +56,12 @@ bool StackBasedOnArray::push(string item)
 }
 
 
-string StackBasedOnArray::pop()
+char StackBasedOnArray::pop()
 {
     if (m_count == 0) {
-        return " ";
+        return ' ';
     }
     m_count--;
-    string tmp = items[m_count];
+    char tmp = items[m_count];
     return tmp;
 }
