@@ -10,9 +10,9 @@ QueueBasedOnList::QueueBasedOnList()
 }
 
 
-~QueueBasedOnList::QueueBasedOnList()
+QueueBasedOnList::~QueueBasedOnList()
 {
-    if (!head) {
+    if (head) {
         SNode *tmp = head;
         head = head->next;
         delete tmp;
@@ -20,7 +20,7 @@ QueueBasedOnList::QueueBasedOnList()
 }
 
 
-void QueueBasedOnList::enqueue(const string& item)
+bool QueueBasedOnList::enqueue(const string& item)
 {
     if (tail->data == " ") {
         tail->data = item;
