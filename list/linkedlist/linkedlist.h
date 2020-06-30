@@ -15,9 +15,10 @@ public:
 	~CLinkedList();
 	bool insertNode(int val, int idx);
 	bool delNode(int nodeVal);
-	bool delNode(stNode *pNode);
+	bool delNode(int idx);
 	stNode* findVal(int val);
-	
+	void printLinkedListNode();
+	stNode* getHeadNodePtr();
 private:
 	stNode* head;
 	int size;

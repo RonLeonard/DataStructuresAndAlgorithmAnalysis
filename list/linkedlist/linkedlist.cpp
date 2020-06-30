@@ -48,8 +48,7 @@ bool CLinkedList::insertNode(int val, int idx)
 	}
 
 	insertNode->nodeData = val;
-	stNode* scout_soldier = head;
-	
+
 	if (idx == 0)
 	{
 		if (head != nullptr)
@@ -57,11 +56,11 @@ bool CLinkedList::insertNode(int val, int idx)
 			insertNode->pNext = head;
 		}
 		head = insertNode;
-		
 	}
 	else
 	{
-		for (int i = 0; i < (idx == size) ? idx : idx - 1; i++)
+		stNode* scout_soldier = head;
+		for (int i = 0; i < idx - 1; i++)
 		{
 			scout_soldier = scout_soldier->pNext;
 		}
@@ -100,20 +99,52 @@ bool CLinkedList::delNode(int nodeVal)
 			pscout_soldier = pscout_soldier->pNext;
 		}
 	}
+	return true;
 }
 
 
 
-bool CLinkedList::delNode(stNode* pNode)
+bool CLinkedList::delNode(int idx)
 {
-
-
+	if (idx >= size)
+	{
+		std::cout << "delete node failed, cause idx >= size." << std::endl;
+		return false;
+	}
+	while(idx)
 }
 
 
 stNode* CLinkedList::findVal(int val)
 {
-
-
+	stNode* pNode = nullptr;
+	return pNode;
 }
 
+
+
+void CLinkedList::printLinkedListNode()
+{
+	if (head == nullptr)
+	{
+		std::cout << "linked list is null." << std::endl;
+		
+	}
+	else
+	{
+		stNode* scout_soldier = head;
+		while (scout_soldier != nullptr)
+		{
+			std::cout << scout_soldier->nodeData << "\t";
+			scout_soldier = scout_soldier->pNext;
+		}
+		std::cout << std::endl;
+	}
+	return;
+}
+
+
+stNode* CLinkedList::getHeadNodePtr()
+{
+	return head;
+}
