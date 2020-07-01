@@ -16,7 +16,7 @@ public:
 	bool insertNode(int val, int idx);
 	bool delNode(int nodeVal);
 	bool delNode(int idx);
-	stNode* findVal(int val);
+	stNode* findFirstPos(int val);
 	void printLinkedListNode();
 	stNode* getHeadNodePtr();
 private:

@@ -111,14 +111,29 @@ bool CLinkedList::delNode(int idx)
 		std::cout << "delete node failed, cause idx >= size." << std::endl;
 		return false;
 	}
-	while(idx)
 }
 
 
-stNode* CLinkedList::findVal(int val)
+stNode* CLinkedList::findFirstPos(int val)
 {
-	stNode* pNode = nullptr;
-	return pNode;
+	if (head == nullptr)
+	{
+		std::cout << "the linked list is null." << std::endl;
+		return nullptr;
+	}
+	stNode* scout_soldier = head;
+	while (scout_soldier != nullptr)
+	{
+		if (scout_soldier->nodeData == val)
+		{
+			return scout_soldier;
+		}
+		else
+		{
+			scout_soldier = scout_soldier->pNext;
+		}
+	}
+	return nullptr;
 }
 
 
