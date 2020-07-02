@@ -27,7 +27,11 @@ CLinkedList::~CLinkedList()
 }
 
 
-
+/*************************************************************
+*1. worst case time complexity: O(1)
+*2. best case time complexity: O(n)
+*3. average case time complexity: O(n)
+************************************************************/
 bool CLinkedList::insertNode(int val, int idx)
 {
 	
@@ -36,7 +40,6 @@ bool CLinkedList::insertNode(int val, int idx)
 		std::cout << "the postion beyond the size of linklist." << std::endl;
 		return false;
 	}
-		
 
 	int i = 0;
 	stNode* insertNode = nullptr;
@@ -114,6 +117,11 @@ bool CLinkedList::delNode(int idx)
 }
 
 
+/*************************************************************
+*1. worst case time complexity: O(1)
+*2. best case time complexity: O(n)
+*3. average case time complexity: O(n)
+************************************************************/
 stNode* CLinkedList::findFirstPos(int val)
 {
 	if (head == nullptr)
