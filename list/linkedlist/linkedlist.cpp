@@ -164,6 +164,22 @@ stNode* CLinkedList::findFirstPos(int val)
 
 
 
+stNode* CLinkedList::findNode(unsigned int idx)
+{
+	if (idx >= size)
+	{
+		std::cout << "find node failed, cause idx >= size." << std::endl;
+		return nullptr;
+	}
+	stNode* scout_soldier = head;
+	while (idx--)
+	{
+		scout_soldier = scout_soldier->pNext;
+	}
+	return scout_soldier;
+}
+
+
 void CLinkedList::printLinkedListNode()
 {
 	if (head == nullptr)
