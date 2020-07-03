@@ -43,10 +43,41 @@ int main(int argc, char ** argv)
 	{
 		std::cout << "insert node succeed" << std::endl;
 	}
+	ret = linkedlist->insertNode(5, 4);
+	if (ret == true)
+	{
+		std::cout << "insert node succeed" << std::endl;
+	}
 
-	//test linked list is: 1, 2, 3, 4?
+	//test linked list is: 1, 2, 3, 4, 5?
 	std::cout << "linked list is :" << std::endl;
 	linkedlist->printLinkedListNode();
+
+	//delete node of the specified value
+	ret = linkedlist->delNode(2);
+	std::cout << "the new linked list is :" << std::endl;
+	linkedlist->printLinkedListNode();
+
+	/*****delete node of the specified idx*******/
+	//idx >= size
+	unsigned int idx1 = 4;
+	ret = linkedlist->delNode(idx1);
+	std::cout << "the new linked list is :" << std::endl;
+	linkedlist->printLinkedListNode();
+
+	//idx == 0
+	unsigned int idx2 = 0;
+	ret = linkedlist->delNode(idx2);
+	std::cout << "the new linked list is :" << std::endl;
+	linkedlist->printLinkedListNode();
+
+	//idx < size
+	unsigned int idx3 = 1;
+	ret = linkedlist->delNode(idx3);
+	std::cout << "the new linked list is :" << std::endl;
+	linkedlist->printLinkedListNode();
+	/*****delete node of the specified idx*******/
+
 	system("pause");
 	return 0;
 }

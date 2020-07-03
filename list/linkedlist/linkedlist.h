@@ -15,7 +15,7 @@ public:
 	~CLinkedList();
 	bool insertNode(int val, int idx);
 	bool delNode(int nodeVal);
-	bool delNode(int idx);
+	bool delNode(unsigned int idx);
 	stNode* findFirstPos(int val);
 	void printLinkedListNode();
 	stNode* getHeadNodePtr();

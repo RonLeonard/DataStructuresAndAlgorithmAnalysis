@@ -34,7 +34,6 @@ CLinkedList::~CLinkedList()
 ************************************************************/
 bool CLinkedList::insertNode(int val, int idx)
 {
-	
 	if (idx > size)
 	{
 		std::cout << "the postion beyond the size of linklist." << std::endl;
@@ -107,13 +106,32 @@ bool CLinkedList::delNode(int nodeVal)
 
 
 
-bool CLinkedList::delNode(int idx)
+bool CLinkedList::delNode(unsigned int idx)
 {
 	if (idx >= size)
 	{
 		std::cout << "delete node failed, cause idx >= size." << std::endl;
 		return false;
 	}
+	if (idx == 0)
+	{
+		stNode* tmpNode = head;
+		head = head->pNext;
+		delete tmpNode;
+		size -= 1;
+		return true;
+	}
+	stNode* scout_soldier = head;
+	idx -= 1;
+	while (idx--)
+	{
+		scout_soldier = scout_soldier->pNext;
+	}
+	stNode* tmpNode = scout_soldier->pNext;
+	scout_soldier->pNext = scout_soldier->pNext->pNext;
+	delete tmpNode;
+	size -= 1;
+	return true;
 }
 
 
