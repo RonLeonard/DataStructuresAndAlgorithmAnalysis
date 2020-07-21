@@ -23,6 +23,7 @@ public:
 private:
 	stNode* head;
 	int size;
+	int length;
 
 };
 

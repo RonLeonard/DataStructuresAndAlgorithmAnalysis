@@ -7,7 +7,7 @@
 
 
 
-CLinkedList::CLinkedList():head(nullptr), size(0)
+CLinkedList::CLinkedList():head(nullptr), size(10), length(0)
 {
 
 }
@@ -24,6 +24,8 @@ CLinkedList::~CLinkedList()
 		delete curPos;
 		curPos = nullptr;
 	}
+	size = 0;
+	length = 0;
 }
 
 
@@ -34,9 +36,15 @@ CLinkedList::~CLinkedList()
 ************************************************************/
 bool CLinkedList::insertNode(int val, int idx)
 {
-	if (idx > size)
+	if (idx >= size)
 	{
 		std::cout << "the postion beyond the size of linklist." << std::endl;
+		return false;
+	}
+
+	if (idx > length)
+	{
+		std::cout << "the postion beyond the length of linklist." << std::endl;
 		return false;
 	}
 
@@ -71,7 +79,7 @@ bool CLinkedList::insertNode(int val, int idx)
 		scout_soldier->pNext = insertNode;
 	}
 
-	size += 1;
+	length += 1;
 	return true;
 }
 
@@ -87,7 +95,7 @@ bool CLinkedList::delNode(int nodeVal)
 			head = head->pNext;
 			delete pscout_soldier;
 			pscout_soldier = head;
-			size -= 1;
+			length -= 1;
 		}
 		else
 		{	
@@ -96,7 +104,7 @@ bool CLinkedList::delNode(int nodeVal)
 				stNode* tmp = pscout_soldier->pNext;
 				pscout_soldier->pNext = pscout_soldier->pNext->pNext;
 				delete tmp;
-				size -= 1;
+				length -= 1;
 			}
 			pscout_soldier = pscout_soldier->pNext;
 		}
@@ -118,7 +126,7 @@ bool CLinkedList::delNode(unsigned int idx)
 		stNode* tmpNode = head;
 		head = head->pNext;
 		delete tmpNode;
-		size -= 1;
+		length -= 1;
 		return true;
 	}
 	stNode* scout_soldier = head;
@@ -130,7 +138,7 @@ bool CLinkedList::delNode(unsigned int idx)
 	stNode* tmpNode = scout_soldier->pNext;
 	scout_soldier->pNext = scout_soldier->pNext->pNext;
 	delete tmpNode;
-	size -= 1;
+	length -= 1;
 	return true;
 }
 
@@ -171,6 +179,13 @@ stNode* CLinkedList::findNode(unsigned int idx)
 		std::cout << "find node failed, cause idx >= size." << std::endl;
 		return nullptr;
 	}
+	
+	if (idx >= length)
+	{
+		std::cout << "find node failed, cause idx >= size." << std::endl;
+		return nullptr;
+	}
+
 	stNode* scout_soldier = head;
 	while (idx--)
 	{
