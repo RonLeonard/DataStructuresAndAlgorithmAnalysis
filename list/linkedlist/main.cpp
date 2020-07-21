@@ -1,6 +1,7 @@
+//#define MEMBER_FUNCTION_
+#ifdef  MEMBER_FUNCTION_
 #include <iostream>
 #include "linkedlist.h"
-
 
 
 int main(int argc, char ** argv)
@@ -105,3 +106,4 @@ int main(int argc, char ** argv)
 	system("pause");
 	return 0;
 }
+#endif

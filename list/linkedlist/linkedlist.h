@@ -16,10 +16,14 @@ public:
 	bool insertNode(int val, int idx);
 	bool delNode(int nodeVal);
 	bool delNode(unsigned int idx);
+	bool delTailNode();
 	stNode* findFirstPos(int val);
 	stNode* findNode(unsigned int idx);
 	void printLinkedListNode();
 	stNode* getHeadNodePtr();
+	int valueIsExist(const int &val);
+	bool linkedlistIsFull();
+	
 private:
 	stNode* head;
 	int size;

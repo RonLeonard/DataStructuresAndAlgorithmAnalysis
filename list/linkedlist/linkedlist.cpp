@@ -121,6 +121,13 @@ bool CLinkedList::delNode(unsigned int idx)
 		std::cout << "delete node failed, cause idx >= size." << std::endl;
 		return false;
 	}
+
+	if (idx >= length)
+	{
+		std::cout << "delete node failed, cause idx >= length." << std::endl;
+		return false;
+	}
+
 	if (idx == 0)
 	{
 		stNode* tmpNode = head;
@@ -141,6 +148,27 @@ bool CLinkedList::delNode(unsigned int idx)
 	length -= 1;
 	return true;
 }
+
+
+
+bool CLinkedList::delTailNode()
+{
+	if (head == nullptr)
+	{
+		std::cout << "linked list is null." << std::endl;
+		return false;
+	}
+
+	if (head->pNext == nullptr)
+
+	stNode* scout_solider = head;
+	int tmpLen = length - 1;
+	while (tmpLen--)
+	{
+
+	}
+}
+
 
 
 /*************************************************************
@@ -173,16 +201,10 @@ stNode* CLinkedList::findFirstPos(int val)
 
 
 stNode* CLinkedList::findNode(unsigned int idx)
-{
-	if (idx >= size)
-	{
-		std::cout << "find node failed, cause idx >= size." << std::endl;
-		return nullptr;
-	}
-	
+{	
 	if (idx >= length)
 	{
-		std::cout << "find node failed, cause idx >= size." << std::endl;
+		std::cout << "find node failed, cause idx >= length." << std::endl;
 		return nullptr;
 	}
 
@@ -219,4 +241,34 @@ void CLinkedList::printLinkedListNode()
 stNode* CLinkedList::getHeadNodePtr()
 {
 	return head;
+}
+
+
+int CLinkedList::valueIsExist(const int &val)
+{
+	if (head == nullptr)
+	{
+		std::cout << "the linked list is null." << std::endl;
+		return -1;
+	}
+
+	stNode* scout_soldier = head;
+	unsigned int tmpIdx = 0;
+	while (scout_soldier != nullptr)
+	{
+		if (scout_soldier->nodeData == val)
+		{
+			return tmpIdx;
+		}
+		tmpIdx++;
+		scout_soldier = scout_soldier->pNext;
+	}
+	return -1;
+}
+
+
+
+bool CLinkedList::linkedlistIsFull()
+{
+	return (length >= size ? true : false);
 }
