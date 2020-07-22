@@ -1,17 +1,15 @@
-﻿// linkedlist.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-
+﻿
 #include <iostream>
 #include "linkedlist.h"
 
 
 
 
-CLinkedList::CLinkedList():head(nullptr), size(10), length(0)
+CLinkedList::CLinkedList() :head(nullptr), size(10), length(0)
 {
 
 }
-	
+
 
 
 CLinkedList::~CLinkedList()
@@ -98,7 +96,7 @@ bool CLinkedList::delNode(int nodeVal)
 			length -= 1;
 		}
 		else
-		{	
+		{
 			if ((pscout_soldier->pNext != nullptr) && (pscout_soldier->pNext->nodeData == nodeVal))
 			{
 				stNode* tmp = pscout_soldier->pNext;
@@ -160,13 +158,23 @@ bool CLinkedList::delTailNode()
 	}
 
 	if (head->pNext == nullptr)
-
-	stNode* scout_solider = head;
-	int tmpLen = length - 1;
-	while (tmpLen--)
 	{
-
+		delete head;
+		head = nullptr;
 	}
+	else
+	{
+		stNode* scout_solider = head;
+		int tmpLen = length - 1;
+		while (scout_solider->pNext->pNext != nullptr)
+		{
+			scout_solider = scout_solider->pNext;
+		}
+
+		delete scout_solider->pNext;
+		scout_solider->pNext = nullptr;
+	}
+	return true;
 }
 
 
@@ -201,7 +209,7 @@ stNode* CLinkedList::findFirstPos(int val)
 
 
 stNode* CLinkedList::findNode(unsigned int idx)
-{	
+{
 	if (idx >= length)
 	{
 		std::cout << "find node failed, cause idx >= length." << std::endl;
@@ -222,7 +230,6 @@ void CLinkedList::printLinkedListNode()
 	if (head == nullptr)
 	{
 		std::cout << "linked list is null." << std::endl;
-		
 	}
 	else
 	{
@@ -244,7 +251,7 @@ stNode* CLinkedList::getHeadNodePtr()
 }
 
 
-int CLinkedList::valueIsExist(const int &val)
+int CLinkedList::valueIsExist(const int& val)
 {
 	if (head == nullptr)
 	{
