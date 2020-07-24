@@ -279,3 +279,9 @@ bool CLinkedList::linkedlistIsFull()
 {
 	return (length >= size ? true : false);
 }
+
+
+int CLinkedList::getLengthOfLinkedList()
+{
+	return length;
+}

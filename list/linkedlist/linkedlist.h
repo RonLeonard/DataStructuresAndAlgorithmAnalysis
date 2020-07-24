@@ -23,6 +23,7 @@ public:
 	stNode* getHeadNodePtr();
 	int valueIsExist(const int &val);
 	bool linkedlistIsFull();
+	int getLengthOfLinkedList();
 	
 private:
 	stNode* head;
