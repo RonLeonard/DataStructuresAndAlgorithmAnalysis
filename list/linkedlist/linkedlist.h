@@ -24,6 +24,7 @@ public:
 	int valueIsExist(const int &val);
 	bool linkedlistIsFull();
 	int getLengthOfLinkedList();
+	bool inverseLInkedList();
 	
 private:
 	stNode* head;

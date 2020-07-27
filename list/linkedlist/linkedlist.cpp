@@ -285,3 +285,42 @@ int CLinkedList::getLengthOfLinkedList()
 {
 	return length;
 }
+
+
+bool CLinkedList::inverseLInkedList()
+{
+	stNode* elem, *prev, *save;
+	stNode* scout_solider = head;
+
+	if (scout_solider == nullptr)
+	{
+		std::cout << "the linked list is null." << std::endl;
+		return false;
+	}
+
+	prev = scout_solider->pNext;
+	save = prev->pNext;
+	//have only 2 link node
+	if (save == nullptr)
+	{
+		prev->pNext = scout_solider;
+		scout_solider->pNext = nullptr;
+		head = prev;
+		return true;
+	}
+	while (save != nullptr)
+	{
+		if (scout_solider == head)
+		{
+			scout_solider->pNext = nullptr;
+		}
+		prev->pNext = scout_solider;
+
+		scout_solider = prev;
+		prev = save;
+		save = save->pNext;
+	}
+	prev->pNext = scout_solider;
+	head = prev;
+	return true;
+}
