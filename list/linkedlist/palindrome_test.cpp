@@ -8,68 +8,68 @@
 
 bool checkLinkedListIsPalindrome(CLinkedList* pLinkedList)
 {
-	////使用快慢指针
-	//stNode* ptr_slow = pLinkedList->getHeadNodePtr();
-	////向导作用
-	//stNode* ptr_fast = pLinkedList->getHeadNodePtr();
-	//stNode* ptr_prev;
-	//stNode* mid2 = nullptr;
-	////find the middle of linked list
-	//while (ptr_fast->pNext != nullptr)
-	//{
-	//	ptr_fast = ptr_fast->pNext;
-	//	ptr_slow = ptr_slow->pNext;
-	//	if (ptr_fast->pNext != nullptr)
-	//	{
-	//		ptr_fast = ptr_fast->pNext;
-	//		mid2 = ptr_slow;//odd
-	//		ptr_prev = ptr_slow;
-	//	}
-	//	else
-	//	{
-	//		mid2 = nullptr;//even
-	//	}
-	//}
-	////reverse linked list
-	//stNode* mid = ptr_slow;
-	//stNode* elem, * prev, * save;
+	//使用快慢指针
+	stNode* ptr_slow = pLinkedList->getHeadNodePtr();
+	//向导作用
+	stNode* ptr_fast = pLinkedList->getHeadNodePtr();
+	stNode* ptr_prev;
+	stNode* mid2 = nullptr;
+	//find the middle of linked list
+	while (ptr_fast->pNext != nullptr)
+	{
+		ptr_fast = ptr_fast->pNext;
+		ptr_slow = ptr_slow->pNext;
+		if (ptr_fast->pNext != nullptr)
+		{
+			ptr_fast = ptr_fast->pNext;
+			mid2 = ptr_slow;//odd
+			//ptr_prev = ptr_slow;
+		}
+		else
+		{
+			mid2 = ptr_slow->pNext;//even
+		}
+	}
+	//reverse linked list
+	stNode* mid = ptr_slow;
+	stNode* elem, * prev, * save;
 
-	//if (mid2 != nullptr)//odd
-	//{
-	//	elem = mid;
-	//	prev = mid->pNext;
-	//	save = prev->pNext;
-	//	elem->pNext = nullptr;
-	//	prev->pNext = elem;
-	//}
-	//else//even
-	//{
-	//	ptr_prev->pNext = nullptr;
-	//	elem = ptr_slow;
-	//	prev = ptr_slow->pNext;
-	//	save = prev->pNext;
-	//	elem->pNext = nullptr;
-	//	prev->pNext = elem;
-	//}
-	//while (save != nullptr)
-	//{
-	//	elem = prev;
-	//	prev = save;
-	//	save = save->pNext;
-	//	prev->pNext = elem;
-	//}
-	//prev->pNext = elem;
+	if (mid2 != nullptr)//odd
+	{
+		elem = mid;
+		prev = mid->pNext;
+		save = prev->pNext;
+		elem->pNext = nullptr;
+		prev->pNext = elem;
+	}
+	else//even
+	{
+		ptr_prev->pNext = nullptr;
+		elem = ptr_slow;
+		prev = ptr_slow->pNext;
+		save = prev->pNext;
+		elem->pNext = nullptr;
+		prev->pNext = elem;
+	}
+	while (save != nullptr)
+	{
+		elem = prev;
+		prev = save;
+		save = save->pNext;
+		prev->pNext = elem;
+	}
+	prev->pNext = elem;
 
-	//// compare the front half and end half of linked list
-	//stNode* front = pLinkedList->getHeadNodePtr();
-	//stNode* end = prev;
-	//while (front != end)
-	//{
-	//	if (front->nodeData != end->nodeData)
-	//	{
-	//		return false;
-	//	}
-	//}
+	// compare the front half and end half of linked list
+	stNode* front = pLinkedList->getHeadNodePtr();
+	stNode* end = prev;
+	while (front != end)
+	{
+		if (front->nodeData != end->nodeData)
+		{
+			return false;
+		}
+	}
 	return true;
 }
 
