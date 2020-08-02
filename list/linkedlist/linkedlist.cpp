@@ -319,3 +319,45 @@ bool CLinkedList::inverseLInkedList()
 	head = prev;
 	return true;
 }
+
+
+stNode* CLinkedList::getMidNodeOfLinkedList()
+{
+	stNode *slow, *fast;
+	stNode *mid;
+	if (head == nullptr)
+	{
+		std::cout << "the linked list is null." << std::endl;
+		return nullptr;
+	}
+	if (head->pNext == nullptr)
+	{
+		std::cout << "the linked list has only one node." << std::endl;
+		return head;
+	}
+
+	slow = head;
+	fast = head;
+	mid = head;
+	bool isEven = false;
+	while (fast->pNext != nullptr)
+	{
+		slow = slow->pNext;
+		fast = fast->pNext;
+		if (fast->pNext != nullptr)
+		{
+			fast = fast->pNext;
+			mid = slow;
+		}
+		else
+		{
+			isEven = true;
+		}
+	}
+
+	if (isEven == true)//even
+		return mid;
+	else
+		return slow;
+
+}

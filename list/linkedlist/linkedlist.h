@@ -25,7 +25,7 @@ public:
 	bool linkedlistIsFull();
 	int getLengthOfLinkedList();
 	bool inverseLInkedList();
-	
+	stNode* getMidNodeOfLinkedList();
 private:
 	stNode* head;
 	int size;

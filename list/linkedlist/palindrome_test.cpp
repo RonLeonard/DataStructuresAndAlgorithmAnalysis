@@ -8,12 +8,33 @@
 
 bool checkLinkedListIsPalindrome(CLinkedList* pLinkedList)
 {
+	stNode* pHead = pLinkedList->getHeadNodePtr();
+	if (pHead == nullptr)
+	{
+		std::cout << "the linked list is null." << std::endl;
+		return false;
+	}
+	if (pHead->pNext == nullptr)
+	{
+		std::cout << "the linked list has only one node." << std::endl;
+		return false;
+	}
+
+	if (pHead->pNext->pNext == nullptr)
+	{
+		if (pHead->nodeData == pHead->pNext->nodeData)
+			return true;
+		else
+			return false;
+	}
 	//使用快慢指针
-	stNode* ptr_slow = pLinkedList->getHeadNodePtr();
+	stNode* ptr_slow = pHead;
 	//向导作用
-	stNode* ptr_fast = pLinkedList->getHeadNodePtr();
-	stNode* mid2 = pLinkedList->getHeadNodePtr();
+	stNode* ptr_fast = pHead;
+	stNode* mid2 = pHead;
 	bool isEven = false;
+
+	
 	//find the middle of linked list
 	while (ptr_fast->pNext != nullptr)
 	{
@@ -54,7 +75,7 @@ bool checkLinkedListIsPalindrome(CLinkedList* pLinkedList)
 		mid2->pNext = nullptr;
 	}
 	// compare the front half and end half of linked list
-	stNode* front = pLinkedList->getHeadNodePtr();
+	stNode* front = pHead;
 	stNode* end = prev;
 	while (front != end)
 	{
@@ -70,7 +91,12 @@ bool checkLinkedListIsPalindrome(CLinkedList* pLinkedList)
 
 bool isPalindrome(CLinkedList* pLinkedList, const int len)
 {
-	
+	if (len == 0)
+	{
+		std::cout << "the linked list is null." << std::endl;
+		return false;
+	}
+
 	int *pBuffer_1 = new int[len];
 	int	*pBuffer_2 = new int[len];
 	stNode* elem;
@@ -108,11 +134,11 @@ int main(int argc, char** argv)
 	pLinkedList->insertNode(1, 0);
 	pLinkedList->insertNode(2, 1);
 	pLinkedList->insertNode(3, 2);
-	pLinkedList->insertNode(3, 3);
-	pLinkedList->insertNode(2, 4);
-	pLinkedList->insertNode(1, 5);
+	pLinkedList->insertNode(2, 3);
+	pLinkedList->insertNode(1, 4);
+	//pLinkedList->insertNode(1, 5);
 
-	std::cout << "the linkedlist is 1, 2, 3, 3, 2, 1?" << std::endl;
+	std::cout << "the linkedlist is:" << std::endl;
 	pLinkedList->printLinkedListNode();
 
 	len = pLinkedList->getLengthOfLinkedList();
@@ -124,37 +150,10 @@ int main(int argc, char** argv)
 	else
 		std::cout << "the linked list is not palindrome." << std::endl;
 	
-	pLinkedList->insertNode(4, 3);
 
-	std::cout << "the linkedlist is 1, 2, 3, 4, 3, 2, 1?" << std::endl;
-	pLinkedList->printLinkedListNode();
-
-	len = pLinkedList->getLengthOfLinkedList();
-	ret = isPalindrome(pLinkedList, len);
-	if (ret)
-	{
-		std::cout << "the linked list is palindrome." << std::endl;
-	}
-	else
-		std::cout << "the linked list is not palindrome." << std::endl;
-
-
-	pLinkedList->insertNode(5, 7);
-
-	std::cout << "the linkedlist is 1, 2, 3, 4, 3, 2, 1, 5?" << std::endl;
-	pLinkedList->printLinkedListNode();
-
-	len = pLinkedList->getLengthOfLinkedList();
-	ret = isPalindrome(pLinkedList, len);
-	if (ret)
-	{
-		std::cout << "the linked list is palindrome." << std::endl;
-	}
-	else
-		std::cout << "the linked list is not palindrome." << std::endl;
-
-
-
+	//method2
+	std::cout << "------------------------------" << std::endl;
+	std::cout << "------------------------------" << std::endl;
 	CLinkedList* pLinkedList_2 = new CLinkedList();
 	/*create a even palindrome 123321*/
 	if (pLinkedList_2 == nullptr)
@@ -166,10 +165,10 @@ int main(int argc, char** argv)
 	pLinkedList_2->insertNode(1, 0);
 	pLinkedList_2->insertNode(2, 1);
 	pLinkedList_2->insertNode(3, 2);
-	pLinkedList_2->insertNode(2, 3);
-	pLinkedList_2->insertNode(2, 4);
+	pLinkedList_2->insertNode(1, 3);
+	//pLinkedList_2->insertNode(1, 4);
 
-	std::cout << "the linkedlist is 1, 2, 3, 3, 2, 1?" << std::endl;
+	std::cout << "the linkedlist is:" << std::endl;
 	pLinkedList_2->printLinkedListNode();
 	ret = checkLinkedListIsPalindrome(pLinkedList_2);
 	if (ret == false)
@@ -177,6 +176,8 @@ int main(int argc, char** argv)
 	else
 		std::cout << "the linked list is palindrome." << std::endl;
 	
+	delete pLinkedList;
+	delete pLinkedList_2;
 	system("pause");
 	return 0;
 }
