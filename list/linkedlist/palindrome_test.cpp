@@ -1,4 +1,4 @@
-#define PALINDROME_TEST
+//#define PALINDROME_TEST
 #ifdef PALINDROME_TEST
 
 #include <iostream>

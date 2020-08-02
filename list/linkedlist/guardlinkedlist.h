@@ -2,9 +2,9 @@
 #define GUARD_LINKED_LIST_H_
 
 
-typedef struct {
+typedef struct stListNode {
 	int data;
-	stListNode* pNext;
+	stListNode *pNext = nullptr;
 } stListNode;
 
 

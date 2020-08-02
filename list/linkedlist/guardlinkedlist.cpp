@@ -38,7 +38,7 @@ stListNode* CGuardLinkedList::findFirstPos(int val)
 
 stListNode* CGuardLinkedList::findVal(unsigned int idx)
 {
-
+	return nullptr;
 
 }
 
