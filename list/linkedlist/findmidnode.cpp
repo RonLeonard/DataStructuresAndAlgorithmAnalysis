@@ -1,4 +1,4 @@
-#define FIND_MIDDLE_NODE_
+//#define FIND_MIDDLE_NODE_
 #ifdef  FIND_MIDDLE_NODE_
 #include <iostream>
 #include "linkedlist.h"

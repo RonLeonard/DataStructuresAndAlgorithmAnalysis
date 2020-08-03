@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	CLinkedList* pLinkedList_merge = new CLinkedList();
 
 	if ((pLinkedList_1 == nullptr)
-		|| (pLinkedList_1 == nullptr)
+		|| (pLinkedList_2 == nullptr)
 		|| (pLinkedList_merge == nullptr))
 	{
 		std::cout << "new  object of CLinkedList class failed." << std::endl;
@@ -38,9 +38,51 @@ int main(int argc, char** argv)
 	std::cout << "the linked list is :" << std::endl;
 	pLinkedList_1->printLinkedListNode();
 
+	
+	stNode* ptr1, * ptr2;
+	int idx = 0;
+	int value = 0;
+	ptr1 = pLinkedList_1->getHeadNodePtr();
+	ptr2 = pLinkedList_2->getHeadNodePtr();
+	if (ptr1 == nullptr || ptr2 == nullptr)
+	{
+		std::cout << "At lease one linked list is null" << std::endl;
+		return false;
+	}
 
-	stNode *scout_solider1, * scout_solider2, *merge
+	while ((ptr1 != nullptr) && (ptr2 != nullptr))
+	{
+		if (ptr1->nodeData > ptr2->nodeData)
+		{
+			value = ptr2->nodeData;
+			ptr2 = ptr2->pNext;
+		}
+		else
+		{
+			value = ptr1->nodeData;
+			ptr1 = ptr1->pNext;
+		}
+		
+		pLinkedList_merge->insertNode(value, idx);
+		idx++;
+	}
 
+	stNode* ptr;
+	ptr = (ptr1 != nullptr) ? ptr1 : ptr2;
+	while (ptr != nullptr)
+	{
+		value = ptr->nodeData;
+		pLinkedList_merge->insertNode(value, idx);
+		idx++;
+		ptr = ptr->pNext;
+	}
+
+	std::cout << "after merge the new linked list is:" << std::endl;
+	pLinkedList_merge->printLinkedListNode();
+	
+	delete pLinkedList_1;
+	delete pLinkedList_2;
+	delete pLinkedList_merge;
 	return 0;
 }
 

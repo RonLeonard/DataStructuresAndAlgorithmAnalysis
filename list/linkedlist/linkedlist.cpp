@@ -5,7 +5,7 @@
 
 
 
-CLinkedList::CLinkedList() :head(nullptr), size(10), length(0)
+CLinkedList::CLinkedList() :head(nullptr), size(15), length(0)
 {
 
 }
