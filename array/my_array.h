@@ -7,7 +7,8 @@ public:
 	CMyArray();
 	bool getValOfSpecifiedIdx(int idx, int &val);
 	bool insertElem(int val, int idx);
-	bool deleteElemOfSpecifiedIdx(int val);
+	bool deleteElemOfSpecifiedIdx(int idx);
+	void printElem();
 	~CMyArray();
 private:
 	int length;
