@@ -76,11 +76,19 @@ bool CMyArray::insertElem(int val, int idx)
 bool CMyArray::deleteElemOfSpecifiedIdx(int idx)
 {
 	bool ret = false;
-	if (idx > length)
+	if (idx >= length)
 	{
 		std::cout << "the idx beyond of the length of myArray" << std::endl;
 		return ret;
 	}
+
+	for (int i = idx; i < length - 1; i++)
+	{
+		*(pArr + i) = *(pArr + i + 1);
+	}
+	*(pArr + length - 1) = 0;
+	length--;
+	return true;
 }
 
 
