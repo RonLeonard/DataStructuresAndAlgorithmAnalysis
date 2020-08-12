@@ -1,4 +1,4 @@
-//#define CAL_VALUEOFEXPRESSION
+#define CAL_VALUEOFEXPRESSION
 #ifndef CAL_VALUEOFEXPRESSION
 
 #include <iostream>
