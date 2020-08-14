@@ -12,6 +12,7 @@ public:
 	~CArrayStack();
 	void printElem();
 	int getCountOfArrayStack();
+	void clearStack();
 private:
 	
 	int *items;

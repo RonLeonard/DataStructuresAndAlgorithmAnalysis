@@ -42,7 +42,10 @@ int CArrayStack::pop()
 {
 	if (count == 0)
 		return -1;
-	return items[--count];
+	int ret = items[count - 1];
+	items[count - 1] = 0;
+	--count;
+	return ret;
 }
 
 
@@ -58,7 +61,7 @@ void CArrayStack::printElem()
 {
 	for (int i = 0; i < count; i++)
 	{
-		std::cout << items[i];
+		std::cout << items[i] <<'\t';
 	}
 	std::cout << std::endl;
 }
@@ -67,4 +70,15 @@ void CArrayStack::printElem()
 int CArrayStack::getCountOfArrayStack()
 {
 	return count;
+}
+
+
+
+void CArrayStack::clearStack()
+{
+	while (count)
+	{
+		this->pop();
+	}
+
 }
