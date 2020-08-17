@@ -10,7 +10,8 @@ using namespace std;
 CArrayQueue::CArrayQueue(int n_) : count(0)
 {
 	this->n = n_;
-	pArray = new int[n];
+	head = tail = 0;
+	pArray = new int[n] {0};
 }
 
 
@@ -24,15 +25,16 @@ CArrayQueue::~CArrayQueue()
 	}
 	n = 0;
 	count = 0;
+	head = tail = 0;
 }
 
 
-
+/*****this enqueue support resize the memory of queue dynamicly*******/
 bool CArrayQueue::enqueue(int val)
 {
 	if (count == n)
 	{
-		int* pNewArray = new int[2 * n];
+		int* pNewArray = new int[2 * n]{0};
 		if (pNewArray == nullptr)
 		{
 			std::cout << "new pNewArray failed." << endl;
@@ -42,9 +44,8 @@ bool CArrayQueue::enqueue(int val)
 		{
 			pNewArray[i] = pArray[i];
 		}
+		delete[] pArray;
 		pArray = pNewArray;
-		delete[] pNewArray;
-		pNewArray = nullptr;
 		n *= 2;
 	}
 	pArray[count] = val;
@@ -53,7 +54,7 @@ bool CArrayQueue::enqueue(int val)
 }
 
 
-
+/********this dequeue function move the position of every element when it called****************/
 int CArrayQueue::dequeue()
 {
 	if (count == 0)
@@ -63,12 +64,62 @@ int CArrayQueue::dequeue()
 	}
 
 	int headVal = pArray[0];
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < count - 1; i++)
 	{
 		pArray[i] = pArray[i + 1];
 	}
-	pArray[count] = 0;
+	pArray[count - 1] = 0;
 	count--;
 	return headVal;
 }
 
+
+void CArrayQueue::printElem()
+{
+	for (int i = 0; i < count; i++)
+	{
+		cout << pArray[i] << "\t";
+	}
+	cout << endl;
+}
+
+void CArrayQueue::printElemOfMemory()
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << pArray[i] << "\t";
+	}
+	cout << endl;
+}
+
+
+
+bool CArrayQueue::enqueue_1(int val)
+{
+	if (tail == n)
+	{
+		if (head == 0)//queue is full.
+			return false;
+		for (int i = head; i < tail; i++)
+		{
+			pArray[i - head] = pArray[i];
+		}
+		
+		tail -= head;
+		head = 0;
+	}
+
+	pArray[tail++] = val;
+	return true;
+}
+int CArrayQueue::dequeue_1()
+{
+	if (head == tail)
+	{
+		cout << "there is no element in queue." << endl;
+		return -1;
+	}
+
+	int ret = pArray[head++];
+	return ret;
+}
