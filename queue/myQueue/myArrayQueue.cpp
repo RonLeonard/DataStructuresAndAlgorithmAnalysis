@@ -120,6 +120,8 @@ int CArrayQueue::dequeue_1()
 		return -1;
 	}
 
-	int ret = pArray[head++];
+	int ret = pArray[head];
+	pArray[head] = 0;
+	head++;
 	return ret;
 }

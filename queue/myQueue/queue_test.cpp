@@ -47,8 +47,15 @@ int main(int argc, char **argv)
 	pArrQueue_1->enqueue_1(2);
 	pArrQueue_1->enqueue_1(3);
 	cout << "the element of queue memory is:" << endl;
-	pArrQueue->printElemOfMemory();
+	pArrQueue_1->printElemOfMemory();
 	pArrQueue_1->dequeue_1();
+	cout << "the element of queue memory is:" << endl;
+	pArrQueue_1->printElemOfMemory();
+	pArrQueue_1->enqueue_1(4);
+	pArrQueue_1->enqueue_1(5);
+	pArrQueue_1->enqueue_1(6);
+	cout << "the element of queue memory is:" << endl;
+	pArrQueue_1->printElemOfMemory();
 }
 
 #endif
