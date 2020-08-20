@@ -10,7 +10,7 @@ public:
 	~CCircularArrQueue();
 	bool enqueue(int val);
 	int dequeue();
-	int printElemOfMemory();
+	void printElemOfMemory();
 
 private:
 	int n = 0;

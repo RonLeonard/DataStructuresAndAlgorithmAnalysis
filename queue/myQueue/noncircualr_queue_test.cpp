@@ -1,5 +1,5 @@
-//#define QUEUE_TEST
-#ifndef QUEUE_TEST
+#define NONCIRCULAR_QUEUE_TEST
+#ifndef NONCIRCULAR_QUEUE_TEST
 
 #include <iostream>
 #include "myArrayQueue.h"
