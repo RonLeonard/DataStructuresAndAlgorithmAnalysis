@@ -14,6 +14,11 @@ int main(int argc, char** argv)
 	pCCircularArrQueue->enqueue(2);
 	pCCircularArrQueue->enqueue(3);
 	pCCircularArrQueue->enqueue(4);
+	
+	pCCircularArrQueue->dequeue();
+	pCCircularArrQueue->dequeue();
+	pCCircularArrQueue->enqueue(5);
+	pCCircularArrQueue->enqueue(6);
 	pCCircularArrQueue->printElemOfMemory();
 	delete pCCircularArrQueue;
 	pCCircularArrQueue = nullptr;

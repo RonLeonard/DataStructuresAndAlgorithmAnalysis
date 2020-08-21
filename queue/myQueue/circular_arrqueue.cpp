@@ -36,15 +36,20 @@ bool CCircularArrQueue::enqueue(int val)
 	}
 	else
 	{
-		if (tail != n - 1)
-		{
-			pArr[tail++] = val;
-		}
-		else
-		{
-			pArr[tail] = val;
-			tail = 0;
-		}
+
+		pArr[tail] = val;
+		tail = (tail + 1) % n;
+		return true;
+		///*basic method*/
+		//if (tail != n - 1)
+		//{
+		//	pArr[tail++] = val;
+		//}
+		//else
+		//{
+		//	pArr[tail] = val;
+		//	tail = 0;
+		//}
 	}
 }
 
@@ -58,7 +63,11 @@ int CCircularArrQueue::dequeue()
 	}
 	else
 	{
-		int ret = 0;
+		int ret = pArr[head];
+		head = (head + 1) % n;
+		return ret;
+		//basic method
+		/*int ret = 0;
 		if (head == n - 1)
 		{
 			ret = pArr[head];
@@ -68,7 +77,7 @@ int CCircularArrQueue::dequeue()
 		{
 			ret = pArr[head++];
 		}
-		return ret;
+		return ret;*/
 	}
 }
 
@@ -76,19 +85,49 @@ int CCircularArrQueue::dequeue()
 
 void CCircularArrQueue::printElemOfMemory()
 {
-	cout << "the circular queue is:" << endl;
-	if (head <= tail)
+	if (head == tail)
 	{
-		for (int i = head; i < n; i++)
+		cout << "the circular queue is null" << endl;
+	}
+	else
+	{
+		if (tail < head)//include the no. (n - 1) position
 		{
-			cout << pArr[i] << "\t";
+			for (int i = head; i < n; i++)
+			{
+				cout << pArr[i] << "\t";
+			}
+			for (int i = 0; i < tail; i++)
+			{
+				cout << pArr[i] << "\t";
+			}
+			cout << endl;
+			cout << "the other element is blow:" << endl;
+			for (int i = tail; i < head; i++)
+			{
+				cout << pArr[i] << "\t";
+			}
+			cout << endl;
+		}
+		else
+		{
+			for (int i = head; i < tail; i++)
+			{
+				cout << pArr[i] << "\t";
+			}
+			cout << endl;
+			cout << "other element is blow:" << endl;
+			for (int i = tail; i < n; i++)
+			{
+				cout << pArr[i] << "\t";
+			}
+
+			for (int i = 0; i < head; i++)
+			{
+				cout << pArr[i] << "\t";
+			}
+			cout << endl;
 		}
 	}
-	
-	for (int i = 0; i <= tail; i++)
-	{
-		cout << pArr[i] << "\t";
-	}
-	cout << endl;
 	return;
 }
