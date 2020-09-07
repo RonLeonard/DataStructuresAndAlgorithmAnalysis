@@ -1,4 +1,4 @@
-#define BUBBLE_SORT
+//#define BUBBLE_SORT
 #ifdef BUBBLE_SORT
 
 #include <iostream>
@@ -14,20 +14,36 @@ using namespace std;
 ******************/
 void bubble_sort(int arr[], int n, bool sort_type)
 {
-	if (sort_type == 0)
+
+	for (int j = 1; j < n; j++)
 	{
-		for (int j = 1; j < n; j++)
+		int swap_flag = false;
+		for (int i = 0; i < n - j; i++)
 		{
-			for (int i = 0; i < n - j; i++)
+			if (sort_type == 0)
 			{
 				if (arr[i] > arr[i + 1])
 				{
 					int tmp = arr[i];
 					arr[i] = arr[i + 1];
 					arr[i + 1] = tmp;
+					swap_flag = true;
+				}
+			}
+			else//sort_type == 1
+			{
+				if (arr[i] < arr[i + 1])
+				{
+					int tmp = arr[i];
+					arr[i] = arr[i + 1];
+					arr[i + 1] = tmp;
+					swap_flag = true;
 				}
 			}
 		}
+
+		if (swap_flag == false)//represents has sorted data
+			break;
 	}
 }
 
@@ -40,6 +56,8 @@ void print_arr(int arr[], int n)
 	}
 	cout << endl;
 }
+
+
 
 int main(int argc, char** argv)
 {

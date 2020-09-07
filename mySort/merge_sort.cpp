@@ -37,7 +37,7 @@ void merge_sort_m1(int arr[], int p, int r)
 void merge_array(int arr[], int p, int q, int r)
 {
 	int *tmp;
-	tmp = (int*)malloc((r - p + 1) * sizeof(int));
+	tmp = new int[r - p + 1];// (int*)malloc((r - p + 1) * sizeof(int));
 	
 	int i = p, j = q + 1;
 	int idx = 0;
@@ -45,40 +45,34 @@ void merge_array(int arr[], int p, int q, int r)
 	{
 		if (arr[i] <= arr[j])
 		{
-			tmp[idx] = arr[i];
-			i++;
+			tmp[idx++] = arr[i++];
 		}
 		else
 		{
-			tmp[idx] = arr[j];
-			j++;
+			tmp[idx++] = arr[j++];
 		}
-		idx++;
 	}
 	
-	while (i <= q)
+	int start = i;
+	int end = q;
+	if (j <= r)
 	{
-		tmp[idx] = arr[i];
-		i++;
-		idx++;
+		start = j;
+		end = r;
 	}
-
-	while (j <= r)
+	while (start <= end)
 	{
-		tmp[idx] = arr[j];
-		j++;
-		idx++;
+		tmp[idx++] = arr[start++];
 	}
 
 	for (int m = p; m <= r; m++)
 	{
 		arr[m] = tmp[m - p];
 	}
-
-	if (tmp != nullptr)
-	{
-		free(tmp);
-	}
+	//also can use memcpy implement copy operator.
+	//memcpy((arr + p), tmp, (r - p + 1) * sizeof(int));
+	delete[] tmp;
+	tmp = nullptr;
 }
 
 
@@ -111,7 +105,7 @@ void print_arr(int arr[], int n)
 
 int main(int argc, char** argv)
 {
-	const int size = 7;
+	const int size = 10;
 	int a[size];
 	for (int i = 0; i < size; i++)
 		a[i] = rand() % 100;
