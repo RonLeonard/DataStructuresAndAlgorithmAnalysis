@@ -1,4 +1,4 @@
-#define MERGE_SORT
+//#define MERGE_SORT
 #ifdef MERGE_SORT
 
 
@@ -88,6 +88,47 @@ void merge_sort_m2(int arr[], int p, int r)
 
 
 
+void mergeBySentry(int arr[], int p, int q, int r)
+{
+	int *leftArr = new int[q - p + 2];
+	int *rightArr = new int[r - q + 1];
+	for (int i = 0; i < q - p + 1; i++)
+	{
+		leftArr[i] = arr[p + i];
+	}
+	leftArr[q - p + 1] = INT_MAX;
+	for (int j = 0; j < r - q; j++)
+	{
+		rightArr[j] = arr[q + 1 + j];
+	}
+	rightArr[r - q] = INT_MAX;
+
+	int i = 0;
+	int j = 0;
+	int k = p;
+	while (k <= r)
+	{
+		if (leftArr[i] <= rightArr[j])
+		{
+			arr[k++] = leftArr[i++];
+		}
+		else
+		{
+			arr[k++] = rightArr[j++];
+		}
+	}
+}
+
+
+void merge_sort_m3(int arr[], int p, int r)
+{
+	if (p >= r)
+		return;
+	int q = (p + r) / 2;
+	merge_sort_m2(arr, p, q);
+	merge_sort_m2(arr, q + 1, r);
+	mergeBySentry(arr, p, q, r);
+}
 
 
 void print_arr(int arr[], int n)
@@ -110,7 +151,7 @@ int main(int argc, char** argv)
 	for (int i = 0; i < size; i++)
 		a[i] = rand() % 100;
 	print_arr(a, size);
-	merge_sort_m2(a, 0, size - 1);
+	merge_sort_m3(a, 0, size - 1);
 	print_arr(a, size);
 	return 0;
 }
