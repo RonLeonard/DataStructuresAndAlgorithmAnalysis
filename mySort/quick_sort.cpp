@@ -8,26 +8,43 @@ using namespace std;
 
 int partition(int arr[], int p, int r)
 {
-	int* tmp = new int[r - p + 1];
-	int val = arr[r];
-	int i = p;
-	while ((i <= r) && (arr[i] <= val))
+	int* tmp_left = new int[r - p + 1]{ 0 };
+	int* tmp_right = new int[r - p + 1]{ 0 };
+
+	int pivot = arr[r];
+	int idx_left = 0;
+	int idx_right = 0;
+	int q = 0;
+	for (int i = p; i < r; i++)
 	{
-		tmp[i - p] = arr[i++];
+		if (arr[i] <= pivot)
+		{
+			tmp_left[idx_left++] = arr[i];
+		}
+		else
+		{
+			tmp_right[idx_right++] = arr[i];
+		}
 	}
-	int q = i;
-	arr[q] = val;
-	i++;
-	while ((i <= r) && (arr[i] > val))
+
+	//copy tmp to arr;
+	for (int i = 0; i < idx_left; i++)
 	{
-		tmp[i - p] = arr[i++];
+		arr[p + i] = tmp_left[i];
 	}
-	for (int i = p; i <= r; i++)
+
+	q = p + idx_left;
+	arr[q] = pivot;
+	
+	for (int i = 0; i < idx_right; i++)
 	{
-		arr[i] = tmp[i - p];
+		arr[p + idx_left + 1 + i] = tmp_right[i];
 	}
-	delete[] tmp;
-	tmp = nullptr;
+
+	delete[] tmp_left;
+	delete[] tmp_right;
+	tmp_left = nullptr;
+	tmp_right = nullptr;
 	return q;
 }
 
