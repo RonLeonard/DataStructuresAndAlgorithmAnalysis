@@ -5,8 +5,12 @@
 using namespace std;
 
 
-
-int partition(int arr[], int p, int r)
+/***********************
+*
+*
+*this method is not in-place sort
+***********************/
+int partition_m1(int arr[], int p, int r)
 {
 	int* tmp_left = new int[r - p + 1]{ 0 };
 	int* tmp_right = new int[r - p + 1]{ 0 };
@@ -49,13 +53,56 @@ int partition(int arr[], int p, int r)
 }
 
 
-void quick_sort_imp(int arr[], int p, int r)
+
+/*******************
+*
+*
+*in place method
+********************/
+int partition_m2(int arr[], int p, int r)
+{
+	int pivot = arr[r];
+	int i;
+	for (i = p; i < r; i++)
+	{
+		int min_val = arr[i];
+		int min_idx = i;
+		for (int j = i + 1; j < r; j++)
+		{
+			if (arr[j] < min_val)
+			{
+				min_val = arr[j];
+				min_idx = j;
+			}
+		}
+		if (min_val <= pivot)
+		{
+			int tmp = arr[i];
+			arr[i] = arr[min_idx];
+			arr[min_idx] = tmp;
+		}
+		else
+		{
+			break;
+		}
+	}
+	arr[i] = pivot;
+	arr[r] = arr[i];
+	return i;
+}
+
+
+void quick_sort_imp(int arr[], int p, int r, bool in_place_flag)
 {
 	if (p >= r)
 		return;
-	int q = partition(arr, p, r);
-	quick_sort_imp(arr, p, q - 1);
-	quick_sort_imp(arr, q + 1, r);
+	int q;
+	if (in_place_flag)
+		q = partition_m2(arr, p, r);
+	else
+		q = partition_m1(arr, p, r);
+	quick_sort_imp(arr, p, q - 1, in_place_flag);
+	quick_sort_imp(arr, q + 1, r, in_place_flag);
 }
 
 
@@ -63,9 +110,9 @@ void quick_sort_imp(int arr[], int p, int r)
 *params:
 *	n: the size of arr.
 *******************/
-void quick_sort(int arr[], int n)
+void quick_sort(int arr[], int n, bool in_place_flag)
 {
-	quick_sort_imp(arr, 0, n - 1);
+	quick_sort_imp(arr, 0, n - 1, in_place_flag);
 }
 
 
@@ -89,7 +136,7 @@ int main(int argc, char** argv)
 	for (int i = 0; i < size; i++)
 		a[i] = rand() % 100;
 	print_arr(a, size);
-	quick_sort(a, size);
+	quick_sort(a, size, 1);
 	print_arr(a, size);
 	return 0;
 }
