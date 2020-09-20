@@ -51,7 +51,7 @@ int bisearch_c1(int arr[], int low, int high, int val)
 		low = mid + 1;  
 	else
 		high = mid - 1;
-	bisearch_c1(arr, low, high, val);
+	return bisearch_c1(arr, low, high, val);
 }
 
 
