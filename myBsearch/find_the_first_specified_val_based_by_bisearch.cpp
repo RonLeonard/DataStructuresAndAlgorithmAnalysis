@@ -1,4 +1,4 @@
-#define FIND_THE_FIRST_SPECIFIED_VAL
+//#define FIND_THE_FIRST_SPECIFIED_VAL
 #ifdef FIND_THE_FIRST_SPECIFIED_VAL
 #include <iostream>
 

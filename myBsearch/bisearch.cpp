@@ -1,7 +1,6 @@
 //#define BISEARCH
 #ifdef BISEARCH
 
-
 #include <iostream>
 using namespace std;
 
