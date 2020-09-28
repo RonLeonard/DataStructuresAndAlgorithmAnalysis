@@ -1,6 +1,7 @@
 //#define BISEARCH
 #ifdef BISEARCH
 
+
 #include <iostream>
 using namespace std;
 
@@ -79,6 +80,5 @@ int main(int argc, char** argv)
 	int idx = bisearch(arr, 6, find_val, 0);
 	cout << "idx = " << idx << endl;
 }
-
 
 #endif
