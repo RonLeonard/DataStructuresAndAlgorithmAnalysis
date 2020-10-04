@@ -8,8 +8,9 @@
 #define SAFEFREE(ptr) if(ptr!=NULL){ free(ptr); ptr=NULL;}
 
 
-CMyArray::CMyArray(): length(0), size(5)
+CMyArray::CMyArray(int size_): length(0)
 {
+	size = size_;
 	pArr = MALLOC(size, int);
 	memset(pArr, 0, size * sizeof(int));
 }
@@ -24,7 +25,6 @@ bool CMyArray::getValOfSpecifiedIdx(int idx, int &val)
 	}
 	else
 	{
-		//val = *(pArr + idx * sizeof(int));
 		val = *(pArr + idx);
 		ret = true;
 	}
@@ -48,7 +48,6 @@ bool CMyArray::insertElem(int val, int idx)
 		memset(pNewArr, 0, size * 2 * sizeof(int));
 		for (int i = 0; i < size; i++)
 		{
-			//*(pNewArr + i * sizeof(int)) = *(pArr + i * sizeof(int));
 			*(pNewArr + i) = *(pArr + i);
 		}
 		size *= 2;
@@ -56,14 +55,11 @@ bool CMyArray::insertElem(int val, int idx)
 		pArr = pNewArr;
 	}
 	
-	//idx <= length
 	for (int i = length; i > idx; i--)
 	{
-		//*(pArr + i * sizeof(int)) = *(pArr + (i - 1) * sizeof(int));
 		*(pArr + i) = *(pArr + i - 1);
 	}
 
-	//*(pArr + idx * sizeof(int)) = val;
 	*(pArr + idx) = val;
 
 	length++;
@@ -97,10 +93,15 @@ void CMyArray::printElem()
 {
 	for (int i = 0; i < length; i++)
 	{
-		//std::cout << *(pArr + i * sizeof(int)) << " ";
 		std::cout << *(pArr + i) << " ";
 	}
 	std::cout << std::endl;
+}
+
+
+int CMyArray::getLength()
+{
+	return length;
 }
 
 

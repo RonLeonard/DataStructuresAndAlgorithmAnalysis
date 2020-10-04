@@ -4,11 +4,12 @@
 class CMyArray
 {
 public:
-	CMyArray();
+	CMyArray(int size_ = 6);
 	bool getValOfSpecifiedIdx(int idx, int &val);
 	bool insertElem(int val, int idx);
 	bool deleteElemOfSpecifiedIdx(int idx);
 	void printElem();
+	int getLength();
 	~CMyArray();
 private:
 	int length;
