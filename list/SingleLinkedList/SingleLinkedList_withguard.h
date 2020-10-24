@@ -20,6 +20,7 @@ public:
 	stNode* findStNodeByVal(int val);
 	void printStNode();
 	stNode* getHeadNode();
+	void reverseLinkedList();
 public:
 	stNode* head;
 	int size;

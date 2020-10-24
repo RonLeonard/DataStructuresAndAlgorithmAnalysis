@@ -1,4 +1,4 @@
-//#define SINGLELINKEDLIST_FUNCTION_TEST
+#define SINGLELINKEDLIST_FUNCTION_TEST
 #ifdef SINGLELINKEDLIST_FUNCTION_TEST
 
 #include <iostream>
@@ -53,6 +53,13 @@ int main(int argc, char *argv[])
 	pCSingleLinkedList_WithGuard->deleteStNode(3);
 	cout << "the linkedlist is 1 2 4 ?" << endl;
 	pCSingleLinkedList_WithGuard->printStNode();
+
+/**********linkedlist reverse***********/
+	pCSingleLinkedList_WithGuard->reverseLinkedList();
+	cout << "the reversed linkedlist is 4 2 1 ?" << endl;
+	pCSingleLinkedList_WithGuard->printStNode();
+/**********linkedlist reverse***********/
+
 	delete pCSingleLinkedList_WithGuard;
 	pCSingleLinkedList_WithGuard = nullptr;
 #endif

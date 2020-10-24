@@ -158,3 +158,24 @@ stNode* CSingleLinkedList_WithGuard::getHeadNode()
 {
 	return head;
 }
+
+
+void CSingleLinkedList_WithGuard::reverseLinkedList()
+{
+	if (head->pNextNode == nullptr || head->pNextNode->pNextNode == nullptr)
+	{
+		cout << "the linked list has no node or one node." << endl;
+		return;
+	}
+
+	stNode* cur = head->pNextNode->pNextNode;
+	head->pNextNode->pNextNode = nullptr;
+	while (cur != nullptr)
+	{
+		stNode* next = cur->pNextNode;
+		cur->pNextNode = head->pNextNode;
+		head->pNextNode = cur;
+		cur = next;
+	}
+	return;
+}
