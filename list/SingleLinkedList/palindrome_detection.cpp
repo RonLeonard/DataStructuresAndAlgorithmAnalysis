@@ -1,4 +1,4 @@
-#define PALINDROME_DETECTION_TEST
+//#define PALINDROME_DETECTION_TEST
 #ifdef PALINDROME_DETECTION_TEST
 #include <iostream>
 #include "SingleLinkedList_withguard.h"
