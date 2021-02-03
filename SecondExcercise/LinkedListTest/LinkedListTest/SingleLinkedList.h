@@ -1,13 +1,14 @@
 #ifndef __SINGLELINKEDLIST_H__
 #define __SINGLELINKEDLIST_H__
 
-typedef struct Node
+class stNode
 {
-	struct Node() : data(0), pNext(nullptr) {};
-	struct Node(int _data, stNode* _next) : data(_data), pNext(_next) {};
+public:
+	stNode() : data(0), pNext(nullptr) {};
+	stNode(int _data, stNode* _next) : data(_data), pNext(_next) {};
 	int data;
-	struct Node* pNext;
-}stNode;
+	stNode* pNext;
+};
 
 //typefef struct Node stNode;
 typedef unsigned int uint;
@@ -20,7 +21,7 @@ public:
 	CSingleLinkedList(const CSingleLinkedList& singleLinkList);
 	~CSingleLinkedList();
 	//copy assignment operator
-	CSingleLinkedList& operator=(const CSingleLinkedList& singleLinkList);
+	//CSingleLinkedList& operator=(const CSingleLinkedList& singleLinkList);
 	bool insertHead(const int val);
 	bool insertHead(stNode* pNode);
 	bool insertTail(const int val);
@@ -30,10 +31,10 @@ public:
 	bool insertAfter(stNode* p, const int val);
 	bool insertAfter(stNode* p, stNode* pNewNode);
 	bool deleteNode(const int val);
-	bool deleteNode(stNode* pNewNode);
-	stNode* find(const int val);
-	uint getCount(stNode* pHead) const;
-	void printLinkedList(const stNode* pHead) const;
+	bool deleteNode(stNode* pNode);
+	stNode* findByVal(const int &val);
+	stNode* findByIndex(const uint & idx);
+	void printLinkedList() const;
 private:
 	stNode* m_pHead;
 	

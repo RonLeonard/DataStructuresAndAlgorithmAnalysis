@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "SingleLinkedList.h"
 
 
@@ -17,15 +20,20 @@ CSingleLinkedList::CSingleLinkedList(const CSingleLinkedList& singleLinkList)
 
 CSingleLinkedList::~CSingleLinkedList()
 {
-
+	while (m_pHead != nullptr)
+	{
+		stNode* tmp = m_pHead;
+		m_pHead = m_pHead->pNext;
+		delete tmp;
+	}
 }
 
 
 
-CSingleLinkedList& CSingleLinkedList::operator=(const CSingleLinkedList& singleLinkList)
-{
-
-}
+//CSingleLinkedList& CSingleLinkedList::operator=(const CSingleLinkedList& singleLinkList)
+//{
+//
+//}
 
 
 bool CSingleLinkedList::insertHead(const int val)
@@ -123,7 +131,7 @@ bool CSingleLinkedList::insertAfter(stNode* p, stNode* pNewNode)
 		return false;
 	pNewNode->pNext = p->pNext;
 	p->pNext = pNewNode;
-	return true;	
+	return true;
 }
 
 
@@ -152,20 +160,20 @@ bool CSingleLinkedList::deleteNode(const int val)
 }
 
 
-bool CSingleLinkedList::deleteNode(stNode* pNewNode)
+bool CSingleLinkedList::deleteNode(stNode* pNode)
 {
-	if (pNewNode == nullptr || m_pHead == nullptr)
+	if (pNode == nullptr || m_pHead == nullptr)
 		return false;
 
 	stNode* tmp = m_pHead;
-	if (tmp == pNewNode)
+	if (tmp == pNode)
 	{
 		delete tmp;
 		m_pHead = m_pHead->pNext;
 		return true;
 	}
 
-	while (tmp != nullptr && tmp->pNext != pNewNode)
+	while (tmp != nullptr && tmp->pNext != pNode)
 	{
 		tmp = tmp->pNext;
 	}
@@ -178,19 +186,34 @@ bool CSingleLinkedList::deleteNode(stNode* pNewNode)
 }
 
 
-
-uint CSingleLinkedList::getCount(stNode* pHead) const
+stNode* CSingleLinkedList::findByVal(const int &val)
 {
-	if (pHead == nullptr) return 0;
-	else
+	stNode* tmp = m_pHead;
+	while (tmp != nullptr && tmp->data != val)
+		tmp = tmp->pNext;
+	return tmp;
+}
+
+
+stNode* CSingleLinkedList::findByIndex(const uint& idx)
+{
+	stNode* tmp = m_pHead;
+	unsigned int pos = 0;
+	while (tmp != nullptr && pos != idx)
 	{
-		uint count = 0;
-		stNode* tmp = pHead;
-		while (tmp != nullptr)
-		{
-			count++;
-			tmp = tmp->pNext;
-		}
-		return count;
+		tmp = tmp->pNext;
+		pos++;
+	}
+	return tmp;
+}
+
+
+void CSingleLinkedList::printLinkedList() const
+{
+	stNode* tmp = m_pHead;
+	while (tmp != nullptr)
+	{
+		printf("%d ", tmp->data);
+		tmp = tmp->pNext;
 	}
 }

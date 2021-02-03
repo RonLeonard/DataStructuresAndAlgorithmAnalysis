@@ -1,20 +1,37 @@
-// LinkedListTest.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "SingleLinkedList.h"
+
 
 int main()
 {
-    
+    CSingleLinkedList* pSingleLinkedList = new CSingleLinkedList();
+    int val = 1;
+    printf("test case 1:\n\n");
+    pSingleLinkedList->insertHead(val);
+    stNode pNode = stNode(0, nullptr);
+    pSingleLinkedList->insertHead(&pNode);
+    val = 2;
+    pSingleLinkedList->insertTail(val);
+
+    stNode pNode2 = stNode(3, nullptr);
+    pSingleLinkedList->insertTail(&pNode2);
+    printf("expected linked list is 0 1 2 3:\n\n");
+    pSingleLinkedList->printLinkedList();
+
+    printf("\n\ntest case 2:\n\n");
+    stNode* tmp = pSingleLinkedList->findByVal(1);
+    pSingleLinkedList->insertBefore(tmp, 4);
+
+    tmp = pSingleLinkedList->findByIndex(2);
+    pSingleLinkedList->insertAfter(tmp, 5);
+    printf("expected linked list is 0 4 1 5 2 3:\n\n");
+    pSingleLinkedList->printLinkedList();
+
+    printf("\n\ntest case 3:\n\n");
+    pSingleLinkedList->deleteNode(0);
+    tmp = pSingleLinkedList->findByIndex(2);
+    pSingleLinkedList->deleteNode(tmp);
+    printf("expected linked list is 4 1 2 3:\n\n");
+    pSingleLinkedList->printLinkedList();
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
