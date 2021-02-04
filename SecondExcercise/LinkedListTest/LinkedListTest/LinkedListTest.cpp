@@ -8,13 +8,13 @@ int main()
     int val = 1;
     printf("test case 1:\n\n");
     pSingleLinkedList->insertHead(val);
-    stNode pNode = stNode(0, nullptr);
-    pSingleLinkedList->insertHead(&pNode);
+    stNode* pNode = new stNode(0, nullptr);
+    pSingleLinkedList->insertHead(pNode);
     val = 2;
     pSingleLinkedList->insertTail(val);
 
-    stNode pNode2 = stNode(3, nullptr);
-    pSingleLinkedList->insertTail(&pNode2);
+    stNode* pNode2 = new stNode(3, nullptr);
+    pSingleLinkedList->insertTail(pNode2);
     printf("expected linked list is 0 1 2 3:\n\n");
     pSingleLinkedList->printLinkedList();
 

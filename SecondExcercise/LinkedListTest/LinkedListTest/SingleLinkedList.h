@@ -1,14 +1,7 @@
 #ifndef __SINGLELINKEDLIST_H__
 #define __SINGLELINKEDLIST_H__
 
-class stNode
-{
-public:
-	stNode() : data(0), pNext(nullptr) {};
-	stNode(int _data, stNode* _next) : data(_data), pNext(_next) {};
-	int data;
-	stNode* pNext;
-};
+#include "listNode.h"
 
 //typefef struct Node stNode;
 typedef unsigned int uint;

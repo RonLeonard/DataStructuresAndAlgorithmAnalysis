@@ -149,9 +149,12 @@
   <ItemGroup>
     <ClCompile Include="LinkedListTest.cpp" />
     <ClCompile Include="SingleLinkedList.cpp" />
+    <ClCompile Include="SingleLinkedListWithGuard.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="listNode.h" />
     <ClInclude Include="SingleLinkedList.h" />
+    <ClInclude Include="SingleLinkedListWithGuard.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
