@@ -39,11 +39,95 @@ bool CSingleLinkedListWithGuard::insertHead(stNode* pNode)
 	if (pNode == nullptr || m_pHead == nullptr) return false;
 	pNode->pNext = m_pHead->pNext;
 	m_pHead->pNext = pNode;
-	return 0;
+	return true;
 }
 
 
 bool CSingleLinkedListWithGuard::insertTail(const int data)
 {
+	stNode* pNode = new stNode(data, nullptr);
+	return insertTail(pNode);
+}
 
+
+bool CSingleLinkedListWithGuard::insertTail(stNode* pNode)
+{
+	if (pNode == nullptr || m_pHead == nullptr) return false;
+	stNode* tmp = m_pHead;
+	while (tmp->pNext != nullptr)
+	{
+		tmp->pNext = tmp->pNext->pNext;
+	}
+	pNode->pNext = tmp->pNext;
+	tmp->pNext = pNode;
+	return true;
+}
+
+
+bool CSingleLinkedListWithGuard::insertBefore(stNode* p, const int data)
+{
+	stNode* pNode = new stNode(data, nullptr);
+	return insertBefore(p, pNode);
+}
+
+
+bool CSingleLinkedListWithGuard::insertBefore(stNode* p, stNode* pNewNode)
+{
+	if (p == nullptr || pNewNode == nullptr || m_pHead == nullptr) return false;
+	stNode* tmp = m_pHead;
+	while (tmp->pNext != nullptr && tmp->pNext != p)
+	{
+		tmp->pNext = tmp->pNext->pNext;
+	}
+	if (tmp->pNext == nullptr) return false;
+	pNewNode->pNext = p;
+	tmp->pNext = pNewNode;
+	return true;
+}
+
+
+bool CSingleLinkedListWithGuard::insertAfter(stNode* p, const int data)
+{
+	stNode* pNode = new stNode(data, nullptr);
+	return insertAfter(p, pNode);
+}
+
+
+bool CSingleLinkedListWithGuard::insertAfter(stNode* p, stNode* pNewNode)
+{
+	if (p == nullptr || pNewNode == nullptr) return false;
+	pNewNode->pNext = p->pNext;
+	p->pNext = pNewNode;
+	return true;
+}
+
+
+bool CSingleLinkedListWithGuard::deleteNode(const int val)
+{
+	if (m_pHead == nullptr) false;
+	stNode* tmp = m_pHead;
+	while (tmp->pNext != nullptr && tmp->pNext->data != val)
+	{
+		tmp->pNext = tmp->pNext->pNext;
+	}
+	if (tmp->pNext == nullptr) return false;
+	stNode* q = tmp->pNext;
+	tmp->pNext = tmp->pNext->pNext;
+	delete q;
+	return true;
+}
+
+
+bool CSingleLinkedListWithGuard::deleteNode(stNode* pNode)
+{
+	if (pNode == nullptr || m_pHead == nullptr) false;
+	stNode* tmp = m_pHead;
+	while (tmp->pNext != nullptr && tmp->pNext != pNode)
+	{
+		tmp->pNext = tmp->pNext->pNext;
+	}
+	if (tmp->pNext == nullptr) return false;
+	tmp->pNext = tmp->pNext->pNext;
+	delete pNode;
+	return true;
 }

@@ -18,10 +18,10 @@ public:
 	bool insertHead(stNode* pNode);
 	bool insertTail(const int data);
 	bool insertTail(stNode* pNode);
-	bool insertBefore(const int data);
-	bool insertBefore(stNode* pNode);
-	bool insertAfter(const int data);
-	bool insertAfter(stNode* pNode);
+	bool insertBefore(stNode* p, const int data);
+	bool insertBefore(stNode* p, stNode* pNewNode);
+	bool insertAfter(stNode* p, const int data);
+	bool insertAfter(stNode* p, stNode* pNewNode);
 	//delete
 	bool deleteNode(const int val);
 	bool deleteNode(stNode* pNode);
