@@ -16,8 +16,13 @@ CSingleLinkedListWithGuard::CSingleLinkedListWithGuard()
 
 CSingleLinkedListWithGuard::~CSingleLinkedListWithGuard()
 {
-
-
+	stNode* q = nullptr;
+	while (m_pHead != nullptr)
+	{
+		q = m_pHead;
+		m_pHead = m_pHead->pNext;
+		delete q;
+	}
 }
 
 
@@ -106,6 +111,7 @@ bool CSingleLinkedListWithGuard::deleteNode(const int val)
 {
 	if (m_pHead == nullptr) false;
 	stNode* tmp = m_pHead;
+
 	while (tmp->pNext != nullptr && tmp->pNext->data != val)
 	{
 		tmp->pNext = tmp->pNext->pNext;
@@ -130,4 +136,44 @@ bool CSingleLinkedListWithGuard::deleteNode(stNode* pNode)
 	tmp->pNext = tmp->pNext->pNext;
 	delete pNode;
 	return true;
+}
+
+
+stNode* CSingleLinkedListWithGuard::findByVal(const int& val)
+{
+	if (m_pHead == nullptr) return nullptr;
+	stNode* tmp = m_pHead->pNext;
+	while (tmp != nullptr && tmp->data != val)
+	{
+		tmp = tmp->pNext;
+	}
+	return tmp;
+}
+
+
+stNode* CSingleLinkedListWithGuard::findByIndex(const unsigned int& idx)
+{
+	if (m_pHead == nullptr) false;
+	unsigned int count = 0;
+	stNode* tmp = m_pHead->pNext;
+	while (tmp != nullptr && count != idx)
+	{
+		tmp = tmp->pNext;
+		count++;
+	}
+	if (tmp == nullptr) return false;
+	return tmp;
+}
+
+
+
+void CSingleLinkedListWithGuard::printLinkedList() const
+{
+	if (m_pHead == nullptr) return;
+	stNode* tmp = m_pHead->pNext;
+	while (tmp != nullptr)
+	{
+		printf("%d ", tmp->data);
+		tmp = tmp->pNext;
+	}
 }

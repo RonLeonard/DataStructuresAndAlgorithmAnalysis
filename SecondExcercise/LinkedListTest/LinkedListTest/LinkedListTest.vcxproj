@@ -147,9 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="LinkedListTest.cpp" />
+    <ClCompile Include="singleLinkedList_test.cpp" />
     <ClCompile Include="SingleLinkedList.cpp" />
     <ClCompile Include="SingleLinkedListWithGuard.cpp" />
+    <ClCompile Include="singleLinkedListWithGuard_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="listNode.h" />

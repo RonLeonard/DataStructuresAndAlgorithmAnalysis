@@ -1,3 +1,5 @@
+#define _SINGLELINKEDLIST_TEST_
+#ifdef _SINGLELINKEDLIST_TEST_
 #include <iostream>
 #include "SingleLinkedList.h"
 
@@ -35,3 +37,4 @@ int main()
     pSingleLinkedList->printLinkedList();
 }
 
+#endif
