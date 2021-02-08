@@ -61,7 +61,7 @@ bool CSingleLinkedListWithGuard::insertTail(stNode* pNode)
 	stNode* tmp = m_pHead;
 	while (tmp->pNext != nullptr)
 	{
-		tmp->pNext = tmp->pNext->pNext;
+		tmp = tmp->pNext;
 	}
 	pNode->pNext = tmp->pNext;
 	tmp->pNext = pNode;
@@ -82,7 +82,7 @@ bool CSingleLinkedListWithGuard::insertBefore(stNode* p, stNode* pNewNode)
 	stNode* tmp = m_pHead;
 	while (tmp->pNext != nullptr && tmp->pNext != p)
 	{
-		tmp->pNext = tmp->pNext->pNext;
+		tmp = tmp->pNext;
 	}
 	if (tmp->pNext == nullptr) return false;
 	pNewNode->pNext = p;
@@ -114,7 +114,7 @@ bool CSingleLinkedListWithGuard::deleteNode(const int val)
 
 	while (tmp->pNext != nullptr && tmp->pNext->data != val)
 	{
-		tmp->pNext = tmp->pNext->pNext;
+		tmp = tmp->pNext;
 	}
 	if (tmp->pNext == nullptr) return false;
 	stNode* q = tmp->pNext;
@@ -130,7 +130,7 @@ bool CSingleLinkedListWithGuard::deleteNode(stNode* pNode)
 	stNode* tmp = m_pHead;
 	while (tmp->pNext != nullptr && tmp->pNext != pNode)
 	{
-		tmp->pNext = tmp->pNext->pNext;
+		tmp = tmp->pNext;
 	}
 	if (tmp->pNext == nullptr) return false;
 	tmp->pNext = tmp->pNext->pNext;
@@ -153,7 +153,7 @@ stNode* CSingleLinkedListWithGuard::findByVal(const int& val)
 
 stNode* CSingleLinkedListWithGuard::findByIndex(const unsigned int& idx)
 {
-	if (m_pHead == nullptr) false;
+	if (m_pHead == nullptr) return nullptr;
 	unsigned int count = 0;
 	stNode* tmp = m_pHead->pNext;
 	while (tmp != nullptr && count != idx)
@@ -161,7 +161,6 @@ stNode* CSingleLinkedListWithGuard::findByIndex(const unsigned int& idx)
 		tmp = tmp->pNext;
 		count++;
 	}
-	if (tmp == nullptr) return false;
 	return tmp;
 }
 

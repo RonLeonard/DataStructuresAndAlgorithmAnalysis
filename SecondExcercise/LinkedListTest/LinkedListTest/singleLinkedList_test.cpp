@@ -1,4 +1,4 @@
-#define _SINGLELINKEDLIST_TEST_
+//#define _SINGLELINKEDLIST_TEST_
 #ifdef _SINGLELINKEDLIST_TEST_
 #include <iostream>
 #include "SingleLinkedList.h"
