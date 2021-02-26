@@ -12,13 +12,13 @@ public:
 	~CDoublyLinkedListWithGuard();
 	//insert
 	bool insertHead(const int& val);
-	bool insertHead(const stDoubNode* pNewNode);
+	bool insertHead(stDoubNode* pNewNode);
 	bool insertTail(const int& val);
-	bool insertTail(const stDoubNode* pNewNode);
-	bool insertBefore(const stDoubNode* p, const int& val);
-	bool insertBefore(const stDoubNode* p, const stDoubNode* pNewNode);
-	bool insertAfter(const stDoubNode* p, const int& val);
-	bool insertAfter(const stDoubNode* p, const stDoubNode* pNewNode);
+	bool insertTail(stDoubNode* pNewNode);
+	bool insertBefore(stDoubNode* p, const int& val);
+	bool insertBefore(stDoubNode* p, stDoubNode* pNewNode);
+	bool insertAfter(stDoubNode* p,  const int& val);
+	bool insertAfter(stDoubNode* p, stDoubNode* pNewNode);
 	//delete
 	bool deleteNode(const int& val);
 	bool deleteNode(const stDoubNode* p);
@@ -29,6 +29,7 @@ public:
 	void printLinkedList() const;
 private:
 	stDoubNode* m_pHead = new stDoubNode();
+	stDoubNode* m_pTail = new stDoubNode();
 };
 
 

@@ -3,6 +3,42 @@
 
 #include "SingleLinkedListWithGuard.h"
 
+//inverse linked list
+stNode* inverseLinkedList(stNode* p)
+{
+    if (p == nullptr)
+        return p;
+    stNode *swap1 = p;
+    stNode *swap2 = p->pNext;
+    stNode *save;
+    while (swap2 != nullptr)
+    {
+        save = swap2->pNext;
+        swap2->pNext = swap1;
+
+        swap1 = swap2;
+        swap2 = save;
+    }
+    return swap1;
+}
+
+
+bool isPalindromes(CSingleLinkedListWithGuard* p)
+{
+    if (p == nullptr)
+        return false;
+    stNode* pFirstNode = p->getFirstNode();
+    //p is null
+    if (pFirstNode == nullptr)
+        return false;
+    //only one node
+    if (pFirstNode->pNext == nullptr)
+        return true;
+    stNode *slow = pFirstNode;
+    stNode* fast = pFirstNode->pNext;
+}
+
+
 int main(int argc, char* argv)
 {
     CSingleLinkedListWithGuard* pSingleLinkedList = new CSingleLinkedListWithGuard();

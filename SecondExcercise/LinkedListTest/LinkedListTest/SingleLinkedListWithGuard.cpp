@@ -165,6 +165,13 @@ stNode* CSingleLinkedListWithGuard::findByIndex(const unsigned int& idx)
 }
 
 
+stNode* CSingleLinkedListWithGuard::getFirstNode()
+{
+	if (m_pHead == nullptr)
+		return nullptr;
+	else
+		return m_pHead->pNext;
+}
 
 void CSingleLinkedListWithGuard::printLinkedList() const
 {

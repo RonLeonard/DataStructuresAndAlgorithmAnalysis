@@ -28,8 +28,11 @@ public:
 	//find
 	stNode* findByVal(const int& val);
 	stNode* findByIndex(const unsigned int& idx);
+	//getFirstNode
+	stNode* getFirstNode();
 	void printLinkedList() const;
 
+	
 private:
 	stNode* m_pHead = new stNode();
 	
