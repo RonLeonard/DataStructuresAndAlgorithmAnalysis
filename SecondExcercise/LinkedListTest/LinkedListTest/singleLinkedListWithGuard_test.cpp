@@ -36,6 +36,20 @@ bool isPalindromes(CSingleLinkedListWithGuard* p)
         return true;
     stNode *slow = pFirstNode;
     stNode* fast = pFirstNode->pNext;
+    while (fast->pNext != nullptr && fast->pNext->pNext != nullptr)
+    {
+        slow = slow->pNext;
+        fast = fast->pNext->pNext;
+    }
+
+    if (fast->pNext == nullptr)//even
+    {
+
+    }
+    else//odd
+    {
+
+    }
 }
 
 
