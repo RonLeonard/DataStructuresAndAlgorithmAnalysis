@@ -19,12 +19,14 @@ stNode* inverseLinkedList(stNode* p)
         swap1 = swap2;
         swap2 = save;
     }
+	p->pNext = nullptr;
     return swap1;
 }
 
 
 bool isPalindromes(CSingleLinkedListWithGuard* p)
 {
+	bool ret = true;
     if (p == nullptr)
         return false;
     stNode* pFirstNode = p->getFirstNode();
@@ -34,26 +36,54 @@ bool isPalindromes(CSingleLinkedListWithGuard* p)
     //only one node
     if (pFirstNode->pNext == nullptr)
         return true;
+	bool isEven = false;
     stNode *slow = pFirstNode;
-    stNode* fast = pFirstNode->pNext;
+    stNode *fast = pFirstNode->pNext;
+	stNode *order= pFirstNode;
+	stNode *inverse, *save_inverse;
     while (fast->pNext != nullptr && fast->pNext->pNext != nullptr)
     {
         slow = slow->pNext;
         fast = fast->pNext->pNext;
     }
-
-    if (fast->pNext == nullptr)//even
+	if (fast->pNext == nullptr)
+	{
+		isEven = true;
+	}
+    //inverse
+    stNode* tmp = slow->pNext;
+    inverse = inverseLinkedList(tmp);
+    save_inverse = inverse;
+    if (isEven == true)//even
     {
-
+		slow->pNext = nullptr;//set guard node
     }
-    else//odd
-    {
 
-    }
+	//compare
+	while (order != inverse)
+	{
+		if (order->data != inverse->data)
+		{
+			ret = false;
+			break;
+		}
+		else
+		{
+			order = order->pNext;
+			inverse = inverse->pNext;
+		}
+	}
+	
+	//resume str
+	stNode *tmp2 = inverseLinkedList(save_inverse);
+	if (isEven == true)//even
+	{
+		slow->pNext = tmp2;
+	}
+	return ret;
 }
 
-
-int main(int argc, char* argv)
+void test_member_function()
 {
     CSingleLinkedListWithGuard* pSingleLinkedList = new CSingleLinkedListWithGuard();
     int val = 1;
@@ -84,6 +114,42 @@ int main(int argc, char* argv)
     pSingleLinkedList->deleteNode(tmp);
     printf("expected linked list is 4 1 2 3:\n\n");
     pSingleLinkedList->printLinkedList();
+}
+
+
+void test_string_isPalindromes()
+{
+    CSingleLinkedListWithGuard* pSingleLinkedList = new CSingleLinkedListWithGuard();
+    int val = 1;
+    bool ret = false;
+    printf("test case 1:\n\n");
+    pSingleLinkedList->insertHead(val);
+    printf("expected linked list is 1:\n\n");
+    pSingleLinkedList->printLinkedList();
+    ret = isPalindromes(pSingleLinkedList);
+    printf("\nlinked list is palindromes: %d\n\n", ret);
+    val = 2;
+    pSingleLinkedList->insertHead(val);
+    printf("expected linked list is 1, 1:\n\n");
+    pSingleLinkedList->printLinkedList();
+    ret = isPalindromes(pSingleLinkedList);
+    printf("\nlinked list is palindromes: %d\n\n", ret);
+
+    val = 3;
+    pSingleLinkedList->insertHead(val);
+    val = 2;
+    pSingleLinkedList->insertHead(val);
+    val = 1;
+    pSingleLinkedList->insertHead(val);
+    printf("expected linked list is 1, 1, 2, 1, 1:\n\n");
+    pSingleLinkedList->printLinkedList();
+    ret = isPalindromes(pSingleLinkedList);
+    printf("\nlinked list is palindromes: %d\n\n", ret);
+}
+
+int main(int argc, char* argv)
+{
+    test_string_isPalindromes();
 }
 
 
