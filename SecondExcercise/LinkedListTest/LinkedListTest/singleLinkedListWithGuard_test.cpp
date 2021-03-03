@@ -83,6 +83,56 @@ bool isPalindromes(CSingleLinkedListWithGuard* p)
 	return ret;
 }
 
+
+CSingleLinkedListWithGuard* merge_twoLists(CSingleLinkedListWithGuard* pList1, CSingleLinkedListWithGuard* pList2)
+{
+    if (pList1 == nullptr && pList2 == nullptr) return nullptr;
+    stNode* pNode1 = pList1->getFirstNode();
+    stNode* pNode2 = pList2->getFirstNode();
+    CSingleLinkedListWithGuard* mergeList = new CSingleLinkedListWithGuard();
+    while (pNode1 != nullptr && pNode2 != nullptr)
+    {
+        if (pNode1->data <= pNode2->data)
+        {
+            mergeList->insertTail(pNode1->data);
+            pNode1 = pNode1->pNext;
+        }
+        else
+        {
+            mergeList->insertTail(pNode2->data);
+            pNode2 = pNode2->pNext;
+        }
+    }
+    while (pNode1 != nullptr)
+    {
+        mergeList->insertTail(pNode1->data);
+        pNode1 = pNode1->pNext;
+    }
+    while (pNode2 != nullptr)
+    {
+        mergeList->insertTail(pNode2->data);
+        pNode2 = pNode2->pNext;
+    }
+    return mergeList;
+}
+
+
+bool checkCircle(CSingleLinkedListWithGuard* p)
+{
+    if (p == nullptr) return false;
+    stNode *slow = p->getFirstNode();
+    if (slow == nullptr) return false;
+    stNode *fast = slow->pNext;
+    while (fast != nullptr && fast->pNext != nullptr)
+    {
+        slow = slow->pNext;
+        fast = fast->pNext->pNext;
+        if (slow == fast) return true;
+    }
+    return false;
+}
+
+
 void test_member_function()
 {
     CSingleLinkedListWithGuard* pSingleLinkedList = new CSingleLinkedListWithGuard();
@@ -147,9 +197,54 @@ void test_string_isPalindromes()
     printf("\nlinked list is palindromes: %d\n\n", ret);
 }
 
+
+void test_merge_twoLists()
+{
+    CSingleLinkedListWithGuard* pList1 = new CSingleLinkedListWithGuard();
+    int val = 1;
+    bool ret = false;
+ 
+    pList1->insertTail(val);
+    val = 3;
+    pList1->insertTail(val);
+    val = 7;
+    pList1->insertTail(val);
+    val = 11;
+    pList1->insertTail(val);
+    printf("expected linked list is 1, 3, 7, 11:\n\n");
+    pList1->printLinkedList();
+    printf("\n");
+
+    CSingleLinkedListWithGuard* pList2 = new CSingleLinkedListWithGuard();
+    val = 2;
+    pList2->insertTail(val);
+    val = 4;
+    pList2->insertTail(val);
+    val = 6;
+    pList2->insertTail(val);
+    val = 8;
+    pList2->insertTail(val);
+    val = 10;
+    pList2->insertTail(val);
+    val = 13;
+    pList2->insertTail(val);
+    printf("expected linked list is 2, 4, 6, 8, 10, 13:\n\n");
+    pList2->printLinkedList();
+    printf("\n");
+    printf("test merge_twoList:\n");
+    CSingleLinkedListWithGuard* pMergeList = merge_twoLists(pList1, pList2);
+    printf("expected linked list is 1, 2, 3, 4, 6, 7, 8, 10, 11, 13:\n\n");
+    pMergeList->printLinkedList();
+}
+
+
+
+
+
 int main(int argc, char* argv)
 {
-    test_string_isPalindromes();
+    //test_string_isPalindromes();
+    test_merge_twoLists();
 }
 
 
