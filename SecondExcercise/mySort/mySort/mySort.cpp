@@ -73,10 +73,11 @@ void CMySort::mergeSort(vector<int>& vec, const int sortType)
 void CMySort::mergeSort_imp(vector<int>& vec, const int sortType, int p, int r)
 {
 	if (p >= r) return;
-	int q = (p + r) / 2;
+	int q = p + (r - p) / 2;
 	mergeSort_imp(vec, sortType, p, q);
 	mergeSort_imp(vec, sortType, q + 1, r);
-	merge(vec, sortType, p, q, r);
+	//merge(vec, sortType, p, q, r);
+	mergeBySentry(vec, sortType, p, q, r);
 }
 
 
@@ -134,6 +135,54 @@ void CMySort::merge(vector<int>& vec, const int sortType, int p, int q, int r)
 	}
 }
 
+
+void CMySort::mergeBySentry(vector<int>& vec, const int sortType, int p, int q, int r)
+{
+	vector<int> left;
+	vector<int> right;
+	for (int i = 0; i <= q - p; i++)
+	{
+		int ele = vec.at(p + i);
+		left.push_back(ele);
+	}
+	
+	
+	for (int j = 0; j < r - q; j++)
+	{
+		int ele = vec.at(q + 1 + j);
+		right.push_back(ele);
+	}
+	if (sortType == SMALL2LARGE)
+	{
+		left.push_back(INTEGER_MAXIMUM);
+		right.push_back(INTEGER_MAXIMUM);
+	}
+	else
+	{
+		left.push_back(INTEGER_MINIMUM);
+		right.push_back(INTEGER_MINIMUM);
+	}
+
+	int idx = p;
+	int i = 0, j = 0;
+	while (idx <= r)
+	{
+		if (sortType == SMALL2LARGE)
+		{
+			if (left.at(i) <= right.at(j))
+				vec.at(idx++) = left.at(i++);
+			else
+				vec.at(idx++) = right.at(j++);
+		}
+		else
+		{
+			if (left.at(i) >= right.at(j))
+				vec.at(idx++) = left.at(i++);
+			else
+				vec.at(idx++) = right.at(j++);
+		}
+	}
+}
 
 }
 

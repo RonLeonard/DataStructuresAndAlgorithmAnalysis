@@ -27,7 +27,7 @@ void insertSort_test(vector<int> vec)
 void mergeSort_test(vector<int> vec)
 {
 	CMySort mySort;
-	mySort.mergeSort(vec, SMALL2LARGE);
+	mySort.mergeSort(vec, LARGE2SAMLL);
 	printVec(vec);
 }
 

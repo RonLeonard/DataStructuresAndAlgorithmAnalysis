@@ -6,11 +6,14 @@
 using namespace std;
 namespace sort_alg
 {
+#define INTEGER_MAXIMUM 9999
+#define INTEGER_MINIMUM -9999
 	enum sortTepe
 	{
 		SMALL2LARGE = 0,
 		LARGE2SAMLL,
 	};
+
 
 	class CMySort
 	{
@@ -22,6 +25,7 @@ namespace sort_alg
 	private:
 		void mergeSort_imp(vector<int>& vec, const int sortType, int p, int r);
 		void merge(vector<int>& vec, const int sortType, int p, int q, int r);
+		void mergeBySentry(vector<int>& vec, const int sortType, int p, int q, int r);
 	};
 }
 #endif
