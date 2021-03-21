@@ -32,6 +32,13 @@ void mergeSort_test(vector<int> vec)
 }
 
 
+void quickSort_test(vector<int> vec)
+{
+	CMySort mySort;
+	mySort.quickSort(vec, SMALL2LARGE);
+	printVec(vec);
+}
+
 int main(int argc, char* argv[])
 {
 	vector<int> origin_datas;
@@ -45,4 +52,6 @@ int main(int argc, char* argv[])
 	insertSort_test(origin_datas);
 	printf("test merge sort:\n");
 	mergeSort_test(origin_datas);
+	printf("test quick sort:\n");
+	quickSort_test(origin_datas);
 }

@@ -184,6 +184,61 @@ void CMySort::mergeBySentry(vector<int>& vec, const int sortType, int p, int q, 
 	}
 }
 
+
+
+void CMySort::quickSort(vector<int>& vec, const int sortType)
+{
+	int n = vec.size();
+	quickSort_imp(vec, sortType, 0, n - 1);
+}
+
+
+void CMySort::quickSort_imp(vector<int>& vec, const int sortType, int p, int r)
+{
+	if (p >= r) return;
+	int q = partition(vec, sortType, p, r);
+	quickSort_imp(vec, sortType, p, q - 1);
+	quickSort_imp(vec, sortType, q + 1, r);
+}
+
+
+int CMySort::partition(vector<int>& vec, const int sortType, int p, int r)
+{
+	int pivot = vec.at(r);
+	int i = p;
+
+	for (int j = p; j < r; j++)
+	{
+		if (sortType == SMALL2LARGE)
+		{
+			if (vec.at(j) < pivot)
+			{
+				swap(vec.at(i), vec.at(j));
+				i++;
+			}
+		}
+		else
+		{
+			if (vec.at(j) > pivot)
+			{
+				swap(vec.at(i), vec.at(j));
+				i++;
+			}
+		}
+	}
+
+	swap(vec.at(i), vec.at(r));
+	return i;
+}
+
+
+void CMySort::swap(int& a, int& b)
+{
+	int tmp = a;
+	a = b;
+	b = tmp;
+}
+
 }
 
 

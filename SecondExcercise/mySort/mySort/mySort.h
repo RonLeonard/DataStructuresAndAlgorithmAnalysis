@@ -22,10 +22,16 @@ namespace sort_alg
 		~CMySort();
 		void insertSort(vector<int>& vec, const int sortType);
 		void mergeSort(vector<int>& vec, const int sortType);
+		void quickSort(vector<int>& vec, const int sortType);
 	private:
 		void mergeSort_imp(vector<int>& vec, const int sortType, int p, int r);
 		void merge(vector<int>& vec, const int sortType, int p, int q, int r);
 		void mergeBySentry(vector<int>& vec, const int sortType, int p, int q, int r);
+		//
+		void quickSort_imp(vector<int>& vec, const int sortType, int p, int r);
+		int partition(vector<int>& vec, const int sortType, int p, int r);
+
+		void swap(int& a, int& b);
 	};
 }
 #endif
