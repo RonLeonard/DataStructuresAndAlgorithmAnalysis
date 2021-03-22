@@ -232,6 +232,32 @@ int CMySort::partition(vector<int>& vec, const int sortType, int p, int r)
 }
 
 
+int CMySort::getKThElem(vector<int>& vec, const int K)
+{
+	int n = vec.size();
+	return getKThElem_imp(vec, K, 0, n - 1);
+}
+
+
+int CMySort::getKThElem_imp(vector<int>& vec, const int K, int p, int r)
+{
+	if (p > r) return -1;
+	int q = partition(vec, SMALL2LARGE, p, r);
+	if (q + 1 == K)
+		return vec.at(q);
+	else if (q + 1 < K)
+	{
+		return getKThElem_imp(vec, K, q + 1, r);
+	}
+	else
+	{
+		return getKThElem_imp(vec, K, p, q - 1);
+	}
+}
+
+
+
+
 void CMySort::swap(int& a, int& b)
 {
 	int tmp = a;

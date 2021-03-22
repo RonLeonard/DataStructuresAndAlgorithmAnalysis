@@ -39,6 +39,15 @@ void quickSort_test(vector<int> vec)
 	printVec(vec);
 }
 
+
+void getKThElem_test(vector<int> vec, const int K)
+{
+	CMySort mySort;
+	int val;
+	val = mySort.getKThElem(vec, K);
+	printf("The Kth Elem is : %d\n", val);
+}
+
 int main(int argc, char* argv[])
 {
 	vector<int> origin_datas;
@@ -54,4 +63,6 @@ int main(int argc, char* argv[])
 	mergeSort_test(origin_datas);
 	printf("test quick sort:\n");
 	quickSort_test(origin_datas);
+	printf("test getKThElem sort:\n");
+	getKThElem_test(origin_datas, 5);
 }

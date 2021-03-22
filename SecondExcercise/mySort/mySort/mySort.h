@@ -23,6 +23,7 @@ namespace sort_alg
 		void insertSort(vector<int>& vec, const int sortType);
 		void mergeSort(vector<int>& vec, const int sortType);
 		void quickSort(vector<int>& vec, const int sortType);
+		int getKThElem(vector<int>& vec, const int K);
 	private:
 		void mergeSort_imp(vector<int>& vec, const int sortType, int p, int r);
 		void merge(vector<int>& vec, const int sortType, int p, int q, int r);
@@ -31,6 +32,9 @@ namespace sort_alg
 		void quickSort_imp(vector<int>& vec, const int sortType, int p, int r);
 		int partition(vector<int>& vec, const int sortType, int p, int r);
 
+		//
+		int getKThElem_imp(vector<int>& vec, const int K, int p, int r);
+		//
 		void swap(int& a, int& b);
 	};
 }
