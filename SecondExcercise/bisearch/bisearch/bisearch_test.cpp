@@ -33,12 +33,78 @@ void test_findVal_byrecursion(const vector<int>& vec, const int val)
 }
 
 
+void test_findFirstElement(const vector<int>& vec, const int val)
+{
+	cout << "test_findFirstElement" << endl;
+	CBisearch bisearch;
+	int idx = bisearch.findFirstElement(vec, val);
+	if (idx == -1)
+	{
+		cout << "val is no found" << endl;
+	}
+	else
+	{
+		cout << "idx = " << idx << endl;
+	}
+}
+
+
+void test_findLastElement(const vector<int>& vec, const int val)
+{
+	cout << "test_findLastElement" << endl;
+	CBisearch bisearch;
+	int idx = bisearch.findLastElement(vec, val);
+	if (idx == -1)
+	{
+		cout << "val is no found" << endl;
+	}
+	else
+	{
+		cout << "idx = " << idx << endl;
+	}
+}
+
+
+void findFirstBiggerOrEqualElement(const vector<int>& vec, const int val)
+{
+	cout << "test_findFirstBiggerOrEqualElement" << endl;
+	CBisearch bisearch;
+	int idx = bisearch.findFirstBiggerOrEqualElement(vec, val);
+	if (idx == -1)
+	{
+		cout << "val is no found" << endl;
+	}
+	else
+	{
+		cout << "idx = " << idx << endl;
+	}
+}
+
+
+void findLastSmallerOrEqualElement(const vector<int>& vec, const int val)
+{
+	cout << "test_findLastSmallerOrEqualElement" << endl;
+	CBisearch bisearch;
+	int idx = bisearch.findLastSmallerOrEqualElement(vec, val);
+	if (idx == -1)
+	{
+		cout << "val is no found" << endl;
+	}
+	else
+	{
+		cout << "idx = " << idx << endl;
+	}
+}
+
+
 void test_findRootOfVal(const int& val, const int& num)
 {
 	CBisearch bisearch;
 	float root = bisearch.findRootOfVal(val, num);
 	printf("the root of val is %f", root);
 }
+
+
 
 
 int main(int argc, char* argv[])
@@ -57,6 +123,9 @@ int main(int argc, char* argv[])
 
 	test_findVal_byloop(vec, val);
 	test_findVal_byrecursion(vec, val);
-	
+	test_findFirstElement(vec, val);
+	test_findLastElement(vec, val);
+	findFirstBiggerOrEqualElement(vec, val);
+	findLastSmallerOrEqualElement(vec, val);
 	test_findRootOfVal(18, 6);
 }
