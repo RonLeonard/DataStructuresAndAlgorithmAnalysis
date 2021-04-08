@@ -18,6 +18,9 @@
     <ClCompile Include="completeBinaryTree_baseArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="completeBinaryTreeRecursionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="completeBinaryTree_baseArray.h">

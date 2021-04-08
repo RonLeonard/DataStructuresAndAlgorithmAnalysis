@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="completeBinaryTreeRecursionTest.cpp" />
     <ClCompile Include="completeBinaryTree_baseArray.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -8,11 +8,14 @@ class CCompleteBiTreeBaseArray
 public:
 	CCompleteBiTreeBaseArray();
 	~CCompleteBiTreeBaseArray();
-	void putInVec(vector<int>& input);
+	void putInVec(const int& input);
 	void preOrder();
+	void preOrder_imp(const int idx);
 	void inOrder();
+	void inOrder_imp(const int idx);
 	void postOrder();
-	void printVec(const vector<int>& vec);
+	void postOrder_imp(const int idx);
+	void printVec();
 private:
 
 	vector<int> ivec;
