@@ -18,10 +18,13 @@
     <ClCompile Include="completeBinaryTree_baseArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="completeBinaryTreeRecursionTest.cpp">
+    <ClCompile Include="binarySearchTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="binarySearchTree.cpp">
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="recursion_tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="binarySearchTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion_tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

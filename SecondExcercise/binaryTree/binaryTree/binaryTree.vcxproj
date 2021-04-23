@@ -139,12 +139,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="binarySearchTree.cpp" />
-    <ClCompile Include="completeBinaryTreeRecursionTest.cpp" />
+    <ClCompile Include="recursion_tree.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="completeBinaryTree_baseArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binarySearchTree.h" />
     <ClInclude Include="completeBinaryTree_baseArray.h" />
+    <ClInclude Include="recursion_tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

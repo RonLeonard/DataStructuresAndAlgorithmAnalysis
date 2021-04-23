@@ -1,11 +1,10 @@
 #include "completeBinaryTree_baseArray.h"
-
+#include "recursion_tree.h"
 
 void test_CompleteBiTree_PreOrder(CCompleteBiTreeBaseArray *pBiTree)
 {
 	pBiTree->preOrder();
 }
-
 
 
 void test_CompleteBiTree_InOrder(CCompleteBiTreeBaseArray* pBiTree)
@@ -20,6 +19,17 @@ void test_CompleteBiTree_postOrder(CCompleteBiTreeBaseArray* pBiTree)
 }
 
 
+
+//test recurison tree
+void test_recurison_tree()
+{
+	CRecursionTree recursionTree;
+	recursionTree.putInElem(1);
+	recursionTree.putInElem(2);
+	recursionTree.putInElem(3);
+	recursionTree.putInElem(4);
+	recursionTree.printRermutations(4, 4);
+}
 int main(int argc, char** argv)
 {
 	CCompleteBiTreeBaseArray biTree;
@@ -35,6 +45,8 @@ int main(int argc, char** argv)
 	test_CompleteBiTree_PreOrder(&biTree);
 	printf("\ntest InOrder:\n");
 	test_CompleteBiTree_InOrder(&biTree);
-	printf("test PostOrder:\n");
+	printf("\ntest PostOrder:\n");
 	test_CompleteBiTree_postOrder(&biTree);
+	printf("\ntest recursion tree:\n");
+	test_recurison_tree();
 }
