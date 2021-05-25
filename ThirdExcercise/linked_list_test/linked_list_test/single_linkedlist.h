@@ -17,6 +17,7 @@ class CSingleLinkedList
 public:
 	CSingleLinkedList();
 	~CSingleLinkedList();
+	StNode* getHead();
 	StNode* findVal(const int &val);
 	bool delVal(const int &val);
 	bool delNode(const StNode* pNode);
@@ -24,6 +25,13 @@ public:
 	bool insertAfter(const StNode* pNode, const int& val);
 	bool insertHead(const int &val);
 	bool insertTail(const int& val);
+
+	void inverseLinkedList();
+
+	StNode* findMiddleNode();
+	void delLastKth(const int &k);
+	void printSingleLinkedList();
+
 private:
 	StNode* head;
 };
