@@ -10,7 +10,7 @@ int main(int argc, char* arg[])
 	ivec.push_back(2);
 	ivec.push_back(4);
 	printVec(ivec);
-	mySort(ivec, BUBBLE_SORT, SMALL2LARGE);
+	mySort(ivec, MERGE_SORT, LARGE2SMALL);
 	printVec(ivec);
 	return 0;
 }

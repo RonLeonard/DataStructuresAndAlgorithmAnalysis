@@ -6,13 +6,14 @@
 using namespace std;
 
 enum {
-	LARGE2SMALL,
+	LARGE2SMALL = 0,
 	SMALL2LARGE,
 };
 
 
-enum {
-	BUBBLE_SORT,
+enum SORT_METHOD 
+{
+	BUBBLE_SORT = 0,
 	INSERT_SORT,
 	MERGE_SORT,
 	QUICK_SORT,
@@ -20,5 +21,6 @@ enum {
 
 
 void mySort(vector<int> &ivec, const int method, int sortType);
+
 void printVec(const vector<int>& ivec);
 #endif
