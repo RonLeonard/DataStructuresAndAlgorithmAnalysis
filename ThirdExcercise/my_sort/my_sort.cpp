@@ -58,7 +58,7 @@ void mergeSort_imp(vector<int>& ivec, int p, int r, int sortType)
 {
 	if (p >= r)
 		return;
-	int q = p + (r - p) >> 1;
+	int q = p + ((r - p) >> 1);
 	mergeSort_imp(ivec, p, q, sortType);
 	mergeSort_imp(ivec, q + 1, r, sortType);
 	merge(ivec, p, q, r, sortType);
