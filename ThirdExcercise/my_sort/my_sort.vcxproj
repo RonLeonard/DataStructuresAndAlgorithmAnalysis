@@ -140,9 +140,11 @@
   <ItemGroup>
     <ClCompile Include="my_sort.cpp" />
     <ClCompile Include="sort_test.cpp" />
+    <ClCompile Include="the_k_biggest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_sort.h" />
+    <ClInclude Include="the_k_biggest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

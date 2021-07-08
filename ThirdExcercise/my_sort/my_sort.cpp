@@ -54,6 +54,7 @@ void merge(vector<int>& ivec, int p, int q, int r, int sortType)
 	}
 }
 
+
 void mergeSort_imp(vector<int>& ivec, int p, int r, int sortType)
 {
 	if (p >= r)
@@ -64,6 +65,66 @@ void mergeSort_imp(vector<int>& ivec, int p, int r, int sortType)
 	merge(ivec, p, q, r, sortType);
 }
 
+
+
+int partition(vector<int>& ivec, int p, int r, int sortType)
+{
+	int pivot = ivec.at(r);
+	int i = p;
+	if (sortType == SMALL2LARGE)
+	{
+		for (int j = p; j < r; j++)
+		{
+			if (ivec.at(j) < pivot)
+			{
+				if (i == j)
+				{
+					i++;
+				}
+				else
+				{
+					int tmp = ivec.at(i);
+					ivec.at(i) = ivec.at(j);
+					ivec.at(j) = tmp;
+					i++;
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int j = p; j < r; j++)
+		{
+			if (ivec.at(j) > pivot)
+			{
+				if (i == j)
+				{
+					i++;
+				}
+				else
+				{
+					int tmp = ivec.at(i);
+					ivec.at(i) = ivec.at(j);
+					ivec.at(j) = tmp;
+					i++;
+				}
+			}
+		}
+	}
+
+	ivec.at(r) = ivec.at(i);
+	ivec.at(i) = pivot;
+	return i;
+}
+
+void quickSort_imp(vector<int>& ivec, int p, int r, int sortType)
+{
+	if (p >= r)
+		return;
+	int q = partition(ivec, p, r, sortType);
+	quickSort_imp(ivec, p, q - 1, sortType);
+	quickSort_imp(ivec, q+ 1, r, sortType);
+}
 
 void mySort(vector<int>& ivec, const int method, int sortType)
 {
@@ -139,6 +200,10 @@ void mySort(vector<int>& ivec, const int method, int sortType)
 	else if (method == MERGE_SORT)
 	{
 		mergeSort_imp(ivec, 0, ivec.size() - 1, sortType);
+	}
+	else if (method == QUICK_SORT)
+	{
+		quickSort_imp(ivec, 0, ivec.size() - 1, sortType);
 	}
 }
 

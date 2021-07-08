@@ -8,9 +8,9 @@ int main(int argc, char* arg[])
 	ivec.push_back(1);
 	ivec.push_back(5);
 	ivec.push_back(2);
-	//ivec.push_back(4);
+	ivec.push_back(4);
 	printVec(ivec);
-	mySort(ivec, MERGE_SORT, LARGE2SMALL);
+	mySort(ivec, QUICK_SORT, SMALL2LARGE);
 	printVec(ivec);
 	return 0;
 }

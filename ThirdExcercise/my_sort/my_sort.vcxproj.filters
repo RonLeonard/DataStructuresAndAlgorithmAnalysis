@@ -21,9 +21,15 @@
     <ClCompile Include="sort_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="the_k_biggest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_sort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="the_k_biggest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
