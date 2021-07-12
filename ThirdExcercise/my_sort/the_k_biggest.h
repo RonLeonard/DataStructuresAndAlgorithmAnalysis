@@ -8,9 +8,13 @@ using namespace std;
 class CTheKBiggest
 {
 public:
-	CTheKBiggest(int numK_, const vector<int>& ivec_) : numK(numK_), ivec(ivec_);
+	CTheKBiggest(const vector<int>& ivec_);
 	~CTheKBiggest();
 	int getTheKBiggestElem(int numK, int &theKBiggestElem);
+
+private:
+	int getTheKBiggestElemImp(int numK, int p, int r);
+	int partitionImp(int p, int r);
 private:
 
 	vector<int> ivec;
